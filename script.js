@@ -18,43 +18,31 @@ const colorRed = document.getElementById('colorRed');
 const colorGreen = "#00e676";
 const colorPurple = "#bf5fff";
 
-// Track the current active mode globally
 let currentActiveMode = 'sandbox'; 
 
-// Render Loop Function (Draws layout styles based on the chosen mode)
+function formatToGameHex(hexValue) {
+    return '0x' + hexValue.replace('#', '').toLowerCase();
+}
+
+// Render Loop Function
 function renderGamePreview() {
     const bg = colorBackground.value;
     const grid = colorGrid.value;
     const border = colorOutline.value;
     const lineWidth = 3.5; 
 
-    // 1. Draw standard background base
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 2. IF 4 TEAMS MODE IS ACTIVE: Color the background quadrants
     if (currentActiveMode === 'teams4') {
         const halfW = canvas.width / 2;
         const halfH = canvas.height / 2;
-        
-        // Top-Left (Blue Team Base Area) - tinted subtly
-        ctx.fillStyle = colorBlue.value + "22"; // Add transparency
-        ctx.fillRect(0, 0, halfW, halfH);
-        
-        // Top-Right (Purple Team Base Area)
-        ctx.fillStyle = colorPurple + "22";
-        ctx.fillRect(halfW, 0, halfW, halfH);
-        
-        // Bottom-Left (Green Team Base Area)
-        ctx.fillStyle = colorGreen + "22";
-        ctx.fillRect(0, halfH, halfW, halfH);
-        
-        // Bottom-Right (Red Team Base Area)
-        ctx.fillStyle = colorRed.value + "22";
-        ctx.fillRect(halfW, halfH, halfW, halfH);
+        ctx.fillStyle = colorBlue.value + "22"; ctx.fillRect(0, 0, halfW, halfH);
+        ctx.fillStyle = colorPurple + "22"; ctx.fillRect(halfW, 0, halfW, halfH);
+        ctx.fillStyle = colorGreen + "22"; ctx.fillRect(0, halfH, halfW, halfH);
+        ctx.fillStyle = colorRed.value + "22"; ctx.fillRect(halfW, halfH, halfW, halfH);
     }
 
-    // 3. Draw Math Gridlines Background matching
     ctx.strokeStyle = grid;
     ctx.lineWidth = 1.0;
     const gridSpacing = 30;
@@ -65,37 +53,22 @@ function renderGamePreview() {
         ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
     }
 
-    // 4. IF 4 TEAMS MODE IS ACTIVE: Draw quadrant separation lines
     if (currentActiveMode === 'teams4') {
-        ctx.strokeStyle = border;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
+        ctx.strokeStyle = border; ctx.lineWidth = 2; ctx.beginPath();
         ctx.moveTo(canvas.width / 2, 0); ctx.lineTo(canvas.width / 2, canvas.height);
-        ctx.moveTo(0, canvas.height / 2); ctx.lineTo(canvas.width, canvas.height / 2);
-        ctx.stroke();
+        ctx.moveTo(0, canvas.height / 2); ctx.lineTo(canvas.width, canvas.height / 2); ctx.stroke();
     }
 
-    // 5. IF MAZE MODE IS ACTIVE: Draw dark gray maze wall blocks
     if (currentActiveMode === 'maze') {
-        ctx.fillStyle = "#bbbbbb"; // Maze wall color
-        ctx.strokeStyle = border;
-        ctx.lineWidth = lineWidth;
-        
-        // Main left wall partition border block
+        ctx.fillStyle = "#bbbbbb"; ctx.strokeStyle = border; ctx.lineWidth = lineWidth;
         ctx.beginPath(); ctx.rect(0, 0, 200, 80); ctx.fill(); ctx.stroke();
         ctx.beginPath(); ctx.rect(0, 80, 50, 240); ctx.fill(); ctx.stroke();
         ctx.beginPath(); ctx.rect(0, 320, 400, 80); ctx.fill(); ctx.stroke();
-        
-        // Top floating maze divider wall
         ctx.beginPath(); ctx.rect(260, 0, 140, 110); ctx.fill(); ctx.stroke();
     }
 
-    // Set configuration layouts for dynamic geometric shapes
-    ctx.strokeStyle = border;
-    ctx.lineWidth = lineWidth;
-    ctx.lineJoin = "round";
+    ctx.strokeStyle = border; ctx.lineWidth = lineWidth; ctx.lineJoin = "round";
 
-    // 6. Draw floating game shapes scatter objects
     drawShape(120, 140, 0.3, colorSquare.value, 'square');
     drawShape(340, 130, -0.2, colorTriangle.value, 'triangle');
     drawShape(410, 280, 0.5, colorSquare.value, 'square');
@@ -105,36 +78,25 @@ function renderGamePreview() {
         drawShape(480, 90, 0.1, colorPentagon.value, 'pentagon');
     }
 
-    // 7. Draw the appropriate tanks based on the selected game mode
     if (currentActiveMode === 'teams4') {
-        // Draw 4 distinct team tanks layout representation from screenshot!
-        drawTank(130, 80, 0.6, colorBlue.value, 4);      // Blue Twin/Overseer tank
-        drawTank(450, 75, 0.0, colorPurple, 8);         // Purple Octo tank
-        drawTank(160, 290, -0.4, colorGreen, 1);        // Green Basic tank
-        drawTank(440, 300, 0.8, colorRed.value, 4);      // Red Flank tank
+        drawTank(130, 80, 0.6, colorBlue.value, 4);      
+        drawTank(450, 75, 0.0, colorPurple, 8);         
+        drawTank(160, 290, -0.4, colorGreen, 1);        
+        drawTank(440, 300, 0.8, colorRed.value, 4);      
     } else {
-        // Just draw the standard single active player tank centered
         const tankX = currentActiveMode === 'maze' ? 240 : canvas.width / 2;
         const tankY = currentActiveMode === 'maze' ? 200 : canvas.height / 2 + 20;
         drawTank(tankX, tankY, -Math.PI/2, colorBody.value, 1);
     }
 
-    // 8. Draw UI Elements text display details over the top
     drawUIOverlay();
 }
 
-// Helper block to build crisp vector math shapes
 function drawShape(x, y, angle, color, type) {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(angle);
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    if (type === 'square') {
-        ctx.rect(-12, -12, 24, 24);
-    } else if (type === 'triangle') {
-        ctx.moveTo(0, -14); ctx.lineTo(13, 11); ctx.lineTo(-13, 11); ctx.closePath();
-    } else if (type === 'pentagon') {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(angle); ctx.fillStyle = color; ctx.beginPath();
+    if (type === 'square') { ctx.rect(-12, -12, 24, 24); }
+    else if (type === 'triangle') { ctx.moveTo(0, -14); ctx.lineTo(13, 11); ctx.lineTo(-13, 11); ctx.closePath(); }
+    else if (type === 'pentagon') {
         for (let i = 0; i < 5; i++) {
             let a = (i * 2 * Math.PI / 5) - Math.PI / 2;
             let px = 18 * Math.cos(a); let py = 18 * Math.sin(a);
@@ -142,97 +104,82 @@ function drawShape(x, y, angle, color, type) {
         }
         ctx.closePath();
     }
-    ctx.fill(); ctx.stroke();
-    ctx.restore();
+    ctx.fill(); ctx.stroke(); ctx.restore();
 }
 
-// Helper block to construct specific Diep tanks classes types
 function drawTank(x, y, angle, bodyColor, barrelCount) {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(angle);
-    ctx.fillStyle = colorBarrel.value;
-    ctx.lineWidth = 3.5;
-    ctx.strokeStyle = colorOutline.value;
-
-    // Draw custom weapon barrels configurations array parameters
+    ctx.save(); ctx.translate(x, y); ctx.rotate(angle); ctx.fillStyle = colorBarrel.value; ctx.lineWidth = 3.5; ctx.strokeStyle = colorOutline.value;
     ctx.beginPath();
-    if (barrelCount === 1) {
-        ctx.rect(0, -11, 40, 22); ctx.fill(); ctx.stroke();
-    } else if (barrelCount === 4) { // Twin / Flank arrangement setups
-        ctx.rect(0, -16, 38, 14); ctx.rect(0, 2, 38, 14); ctx.fill(); ctx.stroke();
-    } else if (barrelCount === 8) { // Circle Octo-tank layout setups
-        for (let i = 0; i < 8; i++) {
-            ctx.save(); ctx.rotate(i * Math.PI / 4); ctx.rect(0, -9, 36, 18); ctx.fill(); ctx.stroke(); ctx.restore();
-        }
+    if (barrelCount === 1) { ctx.rect(0, -11, 40, 22); ctx.fill(); ctx.stroke(); }
+    else if (barrelCount === 4) { ctx.rect(0, -16, 38, 14); ctx.rect(0, 2, 38, 14); ctx.fill(); ctx.stroke(); }
+    else if (barrelCount === 8) {
+        for (let i = 0; i < 8; i++) { ctx.save(); ctx.rotate(i * Math.PI / 4); ctx.rect(0, -9, 36, 18); ctx.fill(); ctx.stroke(); ctx.restore(); }
     }
-    
-    // Draw central round bubble base shell cover capsule
-    ctx.fillStyle = bodyColor;
-    ctx.beginPath();
-    ctx.arc(0, 0, 22, 0, 2 * Math.PI);
-    ctx.fill(); ctx.stroke();
-    ctx.restore();
+    ctx.fillStyle = bodyColor; ctx.beginPath(); ctx.arc(0, 0, 22, 0, 2 * Math.PI); ctx.fill(); ctx.stroke(); ctx.restore();
 }
 
-// Helper layout overlays text mapping
 function drawUIOverlay() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
-    ctx.beginPath(); ctx.roundRect(15, 15, 110, 30, 4); ctx.fill();
+    ctx.fillStyle = "rgba(0, 0, 0, 0.15)"; ctx.beginPath(); ctx.roundRect(15, 15, 110, 30, 4); ctx.fill();
     ctx.fillStyle = "#ffffff"; ctx.font = "bold 12px Arial";
     ctx.fillText(currentActiveMode === 'teams4' ? "4 Team TDM" : "Score: 42,910", 25, 34);
-
-    if (currentActiveMode === 'maze') {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
-        ctx.beginPath(); ctx.roundRect(210, 355, 60, 18, 10); ctx.fill();
-        ctx.fillStyle = "#ffffff"; ctx.font = "10px Arial";
-        ctx.fillText("Jimmy", 225, 368);
-    }
 }
 
-// Gamemode Button Switching Event Routing Hooks
+// Button Handling for Modes
 const modeButtons = document.querySelectorAll('.mode-btn');
 modeButtons.forEach(button => {
     button.addEventListener('click', () => {
         modeButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-
         currentActiveMode = button.getAttribute('data-mode');
-        
-        // Setup state variable modifications variables adjustments
         if (currentActiveMode === 'sandbox') colorBody.value = "#9842eb";
         else if (currentActiveMode === 'ffa' || currentActiveMode === 'maze') colorBody.value = "#00b2e1";
         else if (currentActiveMode === 'teams2' || currentActiveMode === 'ctf') colorBody.value = colorBlue.value;
         else if (currentActiveMode === 'teams4') colorBody.value = colorRed.value;
-
         renderGamePreview();
     });
 });
 
-// Sync listeners up onto configurations matrix changes loops
 const allPickers = [colorBarrel, colorBody, colorOutline, colorBackground, colorGrid, colorSquare, colorTriangle, colorPentagon, colorBlue, colorRed];
 allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
 
-// Execute drawing render run on creation trigger setup
 renderGamePreview();
 
-// Standard configurations script builders output triggers functions 
-function generateThemeScript() {
-    return `// Diep.io Custom Console Theme Script\n` +
-           `net_set_color(3, "${colorBackground.value}"); // Canvas Background\n` +
-           `net_set_color(4, "${colorGrid.value}"); // Grid Lines\n` +
-           `net_set_color(1, "${colorBody.value}"); // Player Tank Body\n` +
-           `net_set_color(0, "${colorBarrel.value}"); // Tank Barrels\n` +
-           `net_set_color(2, "${colorOutline.value}"); // Outlines`;
+// REPLACEMENT CORE ENGINE: Modifies existing scripts or outputs a fresh template
+function processAndReplaceScript() {
+    const userPastedScript = document.getElementById('codeInput').value.trim();
+    
+    // Get currently selected picker values formatted as 0xHex
+    const barrel = formatToGameHex(colorBarrel.value);
+    const stroke = formatToGameHex(colorOutline.value);
+    const bg = formatToGameHex(colorBackground.value);
+    const grid = formatToGameHex(colorGrid.value);
+    const blueTeam = formatToGameHex(colorBlue.value);
+    const redTeam = formatToGameHex(colorRed.value);
+    const square = formatToGameHex(colorSquare.value);
+    const triangle = formatToGameHex(colorTriangle.value);
+    const pentagon = formatToGameHex(colorPentagon.value);
+
+    // If the user pasted absolutely nothing, output your full reference code template filled with their colors
+    if (userPastedScript === "") {
+        return `net_replace_color 2 0xdedede; net_replace_color 15 0x444444; net_replace_color 3 ${blueTeam}; net_replace_color 4 ${redTeam}; net_replace_color 5 0xbf7ff5; net_replace_color 6 0x00e16e; net_replace_color 17 0xc6c6c6; net_replace_color 12 ${square}; net_replace_color 8 0xfffa00; net_replace_color 7 ${triangle}; net_replace_color 16 0xfcc376; net_replace_color 9 0xff1b1b; net_replace_color 10 0x0c73fc; net_replace_color 11 0xf177dd; net_replace_color 14 0xbbbbbb; net_replace_color 1 ${barrel}; ren_bar_background_color 0x000000; ren_stroke_solid_color ${stroke}; net_replace_color 13 0x64ff8c; ren_xp_bar_fill_color 0xffde43; ren_score_bar_fill_color 0x43ff91; ren_health_fill_color 0x85e37d; ren_health_background_color 0x000000; ren_grid_color ${grid}; ren_minimap_background_color 0xCDCDCD; ren_minimap_border_color 0x797979; ren_background_color ${bg}; ren_border_color 0x000000; ui_replace_colors 0xff9200, 0xff00f8, 0x9c3eff, 0x161fff, 0xffed3f, 0xff0000, 0x88ff41, 0x00f5ff; ren_grid_base_alpha 0; ren_stroke_soft_color_intensity 1; ren_stroke_soft_color true; ren_border_color_alpha 0.1; ren_shadows true; ren_shadow_blur 15.444444; ren_shadow_alpha 0.15; ren_shadow_x 20; ren_shadow_color 0x000000`;
+    }
+
+    // Smart regex rules to search for exact command syntax fragments and update their trailing 0x hex values
+    let modifiedScript = userPastedScript;
+    modifiedScript = modifiedScript.replace(/(net_replace_color\s+1\s+)(0x[0-9a-fA-F]{6})/g, `$1${barrel}`);
+    modifiedScript = modifiedScript.replace(/(net_replace_color\s+3\s+)(0x[0-9a-fA-F]{6})/g, `$1${blueTeam}`);
+    modifiedScript = modifiedScript.replace(/(net_replace_color\s+4\s+)(0x[0-9a-fA-F]{6})/g, `$1${redTeam}`);
+    modifiedScript = modifiedScript.replace(/(net_replace_color\s+12\s+)(0x[0-9a-fA-F]{6})/g, `$1${square}`);
+    modifiedScript = modifiedScript.replace(/(net_replace_color\s+7\s+)(0x[0-9a-fA-F]{6})/g, `$1${triangle}`);
+    modifiedScript = modifiedScript.replace(/(ren_stroke_solid_color\s+)(0x[0-9a-fA-F]{6})/g, `$1${stroke}`);
+    modifiedScript = modifiedScript.replace(/(ren_grid_color\s+)(0x[0-9a-fA-F]{6})/g, `$1${grid}`);
+    modifiedScript = modifiedScript.replace(/(ren_background_color\s+)(0x[0-9a-fA-F]{6})/g, `$1${bg}`);
+
+    return modifiedScript;
 }
 
+// Click Trigger Actions setup 
 document.getElementById('viewCodeBtn').addEventListener('click', () => {
-    document.getElementById('codeOutput').value = generateThemeScript();
+    document.getElementById('codeOutput').value = processAndReplaceScript();
 });
 
-document.getElementById('copyCodeBtn').addEventListener('click', () => {
-    const output = document.getElementById('codeOutput');
-    output.value = generateThemeScript(); output.select();
-    navigator.clipboard.writeText(output.value);
-    alert('Diep.io theme copied!');
-});
