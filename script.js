@@ -20,6 +20,8 @@ const colorPentagon = document.getElementById('colorPentagon');
 const colorHealth = document.getElementById('colorHealth');
 const colorMinimap = document.getElementById('colorMinimap');
 const colorScoreboard = document.getElementById('colorScoreboard');
+const colorBlue = document.getElementById('colorBlue');
+const colorRed = document.getElementById('colorRed');
 
 // Setup update engine functionality
 function updateThemeColors() {
@@ -41,10 +43,42 @@ function updateThemeColors() {
     `;
 }
 
+// Gamemode Interaction Engine
+const modeButtons = document.querySelectorAll('.mode-btn');
+modeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // 1. Swap active visual styling borders on the buttons
+        modeButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // 2. Modify player tank preview body depending on picked gamemode rules
+        const modeText = button.textContent.trim();
+        if (modeText === "FFA" || modeText === "Maze") {
+            colorBody.value = "#00b2e1"; // Reset to standard solo blue color
+            alert(`Switched to ${modeText} layout simulation! Colors are now set for standard free-for-all mechanics.`);
+        } else if (modeText === "2 Teams") {
+            colorBody.value = colorBlue.value; // Force sync with team variable settings
+            alert("Switched to 2 Teams simulation mode!");
+        } else if (modeText === "4 Teams") {
+            colorBody.value = colorRed.value; // Force alternate team body representation
+            alert("Switched to 4 Teams simulation mode!");
+        } else if (modeText === "Sandbox") {
+            colorBody.value = "#9842eb"; // Use sandbox purple theme indicator
+        }
+        
+        // Execute recalculations engine
+        updateThemeColors();
+    });
+});
+
 // Generate the specific theme script output text block
 function generateThemeScript() {
+    const activeModeBtn = document.querySelector('.mode-btn.active');
+    const currentMode = activeModeBtn ? activeModeBtn.textContent.trim() : "Standard";
+
     const themeSettings = {
         author: "Custom Theme Creator",
+        selectedMode: currentMode,
         barrel: colorBarrel.value,
         tankBody: colorBody.value,
         bg: colorBackground.value,
@@ -61,12 +95,11 @@ function generateThemeScript() {
         }
     };
 
-    // Formatted structure matching expected console custom setup array formats
-    return `// Copy this text into your browser console or script manager:\n\nconst myCustomTheme = ${JSON.stringify(themeSettings, null, 2)};\n\nconsole.log("Diep.io Theme Applied Successfully!");`;
+    return `// Copy this text into your browser console or script manager:\n\nconst myCustomTheme = ${JSON.stringify(themeSettings, null, 2)};\n\nconsole.log("Diep.io ${currentMode} Theme Applied Successfully!");`;
 }
 
 // Attach Event Listeners onto input forms
-const inputs = [colorBarrel, colorBody, colorBackground, colorGrid, colorSquare, colorTriangle, colorPentagon, colorHealth, colorMinimap, colorScoreboard];
+const inputs = [colorBarrel, colorBody, colorBackground, colorGrid, colorSquare, colorTriangle, colorPentagon, colorHealth, colorMinimap, colorScoreboard, colorBlue, colorRed];
 inputs.forEach(input => {
     input.addEventListener('input', updateThemeColors);
 });
