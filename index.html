@@ -14,24 +14,57 @@
         <!-- LEFT SIDEBAR: GAMEMODES -->
         <div class="sidebar gamemodes">
             <h2>Gamemodes</h2>
-            <button class="mode-btn active" data-mode="sandbox">Sandbox</button>
-            <button class="mode-btn" data-mode="ffa">FFA</button>
-            <button class="mode-btn" data-mode="teams2">2 Teams</button>
-            <button class="mode-btn" data-mode="teams4">4 Teams</button>
-            <button class="mode-btn" data-mode="maze">Maze</button>
-            <button class="mode-btn" data-mode="ctf">Capture the Flag</button>
+            <button class="mode-btn active" style="background-color: #9842eb;">Sandbox</button>
+            <button class="mode-btn" style="background-color: #2be6de;">FFA</button>
+            <button class="mode-btn" style="background-color: #85e333;">2 Teams</button>
+            <button class="mode-btn" style="background-color: #f05151;">4 Teams</button>
+            <button class="mode-btn" style="background-color: #f1b832;">Maze</button>
+            <button class="mode-btn" style="background-color: #3b74e6;">Capture the Flag</button>
         </div>
 
-        <!-- CENTER: LIVE CANVAS PREVIEW -->
+        <!-- CENTER: LIVE PREVIEW GAME CONSOLE -->
         <div class="preview-container">
-            <canvas id="gameCanvas" width="600" height="400"></canvas>
+            <div class="game-preview" id="gamePreview">
+                <!-- Scoreboard -->
+                <div class="scoreboard" id="previewScoreboard">
+                    <div>Scoreboard</div>
+                    <div class="score-bar"></div>
+                </div>
+
+                <!-- Game Shapes and Tank Mockup -->
+                <div class="game-elements">
+                    <div class="shape triangle" id="previewTriangle"></div>
+                    <div class="shape pentagon" id="previewPentagon"></div>
+                    <div class="shape square" id="previewSquare"></div>
+                    
+                    <!-- Player Tank Mockup -->
+                    <div class="tank" id="previewTank">
+                        <div class="barrel" id="previewBarrel"></div>
+                        <div class="body" id="previewBody"></div>
+                    </div>
+                </div>
+
+                <!-- Health Bar -->
+                <div class="health-container">
+                    <div class="health-name">Player (Admin)</div>
+                    <div class="health-bar-bg">
+                        <div class="health-bar-fill" id="previewHealth"></div>
+                    </div>
+                </div>
+
+                <!-- Minimap -->
+                <div class="minimap" id="previewMinimap">
+                    <div class="minimap-dot"></div>
+                </div>
+            </div>
         </div>
 
-        <!-- RIGHT SIDEBAR: ACTIONS -->
+        <!-- RIGHT SIDEBAR: OPTIONS -->
         <div class="sidebar options">
-            <h2>Actions</h2>
-            <button id="copyCodeBtn">COPY SCRIPT</button>
-            <textarea id="codeOutput" readonly placeholder="Your updated script lives here..."></textarea>
+            <h2>Other options</h2>
+            <button id="viewCodeBtn">view code</button>
+            <button id="copyCodeBtn">copy code</button>
+            <textarea id="codeOutput" readonly placeholder="Your generated code will appear here..."></textarea>
         </div>
     </div>
 
@@ -39,24 +72,26 @@
     <div class="control-panel">
         <div class="control-group">
             <h3>object colors</h3>
-            <div class="color-picker-row"><input type="color" id="colorBarrel" value="#999999"><label>Tank Barrels</label></div>
-            <div class="color-picker-row"><input type="color" id="colorBody" value="#00b2e1"><label>Player Body</label></div>
-            <div class="color-picker-row"><input type="color" id="colorOutline" value="#555555"><label>Element Outlines</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBarrel" value="#999999"><label>Barrels</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBody" value="#00b2e1"><label>Body</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBlue" value="#00b2e1"><label>Blue team</label></div>
+            <div class="color-picker-row"><input type="color" id="colorRed" value="#f14e54"><label>Red team</label></div>
         </div>
 
         <div class="control-group">
             <h3>environment</h3>
-            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Canvas BG</label></div>
-            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Grid Line</label></div>
-            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Square Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Triangle Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Pentagon Shape</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Background</label></div>
+            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Grid Lines</label></div>
+            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe46b"><label>Square</label></div>
+            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Triangle</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Pentagon</label></div>
         </div>
 
         <div class="control-group">
-            <h3>Team Adjustments</h3>
-            <div class="color-picker-row"><input type="color" id="colorBlue" value="#00b2e1"><label>Blue Team color</label></div>
-            <div class="color-picker-row"><input type="color" id="colorRed" value="#f14e54"><label>Red Team color</label></div>
+            <h3>interface / ui</h3>
+            <div class="color-picker-row"><input type="color" id="colorHealth" value="#85e333"><label>Health</label></div>
+            <div class="color-picker-row"><input type="color" id="colorMinimap" value="#b5b5b5"><label>Minimap</label></div>
+            <div class="color-picker-row"><input type="color" id="colorScoreboard" value="#85e333"><label>Scoreboard</label></div>
         </div>
     </div>
 
