@@ -82,10 +82,10 @@ function renderGamePreview() {
         ctx.strokeStyle = border;
         ctx.lineWidth = lineWidth;
         
-        ctx.beginPath(); ctx.rect(0, 0, 200, 80); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.rect(0, 80, 50, 240); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.rect(0, 320, 400, 80); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.rect(260, 0, 140, 110); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.fillRect(0, 0, 200, 80); ctx.strokeRect(0, 0, 200, 80);
+        ctx.beginPath(); ctx.fillRect(0, 80, 50, 240); ctx.strokeRect(0, 80, 50, 240);
+        ctx.beginPath(); ctx.fillRect(0, 320, 400, 80); ctx.strokeRect(0, 320, 400, 80);
+        ctx.beginPath(); ctx.fillRect(260, 0, 140, 110); ctx.strokeRect(260, 0, 140, 110);
     }
 
     // Set configuration layouts for dynamic geometric shapes
@@ -153,9 +153,10 @@ function drawTank(x, y, angle, bodyColor, barrelCount) {
     ctx.fillStyle = bodyColor; ctx.beginPath(); ctx.arc(0, 0, 22, 0, 2 * Math.PI); ctx.fill(); ctx.stroke(); ctx.restore();
 }
 
-// Helper layout overlays text mapping
+// Helper layout overlays text mapping (Uses universal simple shapes)
 function drawUIOverlay() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.15)"; ctx.beginPath(); ctx.roundRect(15, 15, 110, 30, 4); ctx.fill();
+    ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+    ctx.fillRect(15, 15, 110, 30);
     ctx.fillStyle = "#ffffff"; ctx.font = "bold 12px Arial";
     ctx.fillText(currentActiveMode === 'teams4' ? "4 Team TDM" : "Score: 42,910", 25, 34);
 }
@@ -202,4 +203,3 @@ renderGamePreview();
 // Safe button checker link logic configuration
 const copyBtn = document.getElementById('copyCodeBtn');
 if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
