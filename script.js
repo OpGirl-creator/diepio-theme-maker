@@ -21,11 +21,6 @@ const colorPurple = "#bf5fff";
 // Track the current active mode globally
 let currentActiveMode = 'sandbox'; 
 
-// Helper function to turn a picker hex (#ffffff) into a game hex (0xffffff)
-function formatToGameHex(hexValue) {
-    return '0x' + hexValue.replace('#', '').toLowerCase();
-}
-
 // Render Loop Function (Draws layout styles based on the chosen mode)
 function renderGamePreview() {
     const bg = colorBackground.value;
@@ -42,15 +37,19 @@ function renderGamePreview() {
         const halfW = canvas.width / 2;
         const halfH = canvas.height / 2;
         
+        // Top-Left (Blue Team Base Area) - tinted subtly
         ctx.fillStyle = colorBlue.value + "22"; // Add transparency
         ctx.fillRect(0, 0, halfW, halfH);
         
+        // Top-Right (Purple Team Base Area)
         ctx.fillStyle = colorPurple + "22";
         ctx.fillRect(halfW, 0, halfW, halfH);
         
+        // Bottom-Left (Green Team Base Area)
         ctx.fillStyle = colorGreen + "22";
         ctx.fillRect(0, halfH, halfW, halfH);
         
+        // Bottom-Right (Red Team Base Area)
         ctx.fillStyle = colorRed.value + "22";
         ctx.fillRect(halfW, halfH, halfW, halfH);
     }
@@ -82,9 +81,12 @@ function renderGamePreview() {
         ctx.strokeStyle = border;
         ctx.lineWidth = lineWidth;
         
+        // Main left wall partition border block
         ctx.beginPath(); ctx.rect(0, 0, 200, 80); ctx.fill(); ctx.stroke();
         ctx.beginPath(); ctx.rect(0, 80, 50, 240); ctx.fill(); ctx.stroke();
         ctx.beginPath(); ctx.rect(0, 320, 400, 80); ctx.fill(); ctx.stroke();
+        
+        // Top floating maze divider wall
         ctx.beginPath(); ctx.rect(260, 0, 140, 110); ctx.fill(); ctx.stroke();
     }
 
@@ -105,11 +107,13 @@ function renderGamePreview() {
 
     // 7. Draw the appropriate tanks based on the selected game mode
     if (currentActiveMode === 'teams4') {
-        drawTank(130, 80, 0.6, colorBlue.value, 4);      
-        drawTank(450, 75, 0.0, colorPurple, 8);         
-        drawTank(160, 290, -0.4, colorGreen, 1);        
-        drawTank(440, 300, 0.8, colorRed.value, 4);      
+        // Draw 4 distinct team tanks layout representation from screenshot!
+        drawTank(130, 80, 0.6, colorBlue.value, 4);      // Blue Twin/Overseer tank
+        drawTank(450, 75, 0.0, colorPurple, 8);         // Purple Octo tank
+        drawTank(160, 290, -0.4, colorGreen, 1);        // Green Basic tank
+        drawTank(440, 300, 0.8, colorRed.value, 4);      // Red Flank tank
     } else {
+        // Just draw the standard single active player tank centered
         const tankX = currentActiveMode === 'maze' ? 240 : canvas.width / 2;
         const tankY = currentActiveMode === 'maze' ? 200 : canvas.height / 2 + 20;
         drawTank(tankX, tankY, -Math.PI/2, colorBody.value, 1);
@@ -151,17 +155,19 @@ function drawTank(x, y, angle, bodyColor, barrelCount) {
     ctx.lineWidth = 3.5;
     ctx.strokeStyle = colorOutline.value;
 
+    // Draw custom weapon barrels configurations array parameters
     ctx.beginPath();
     if (barrelCount === 1) {
         ctx.rect(0, -11, 40, 22); ctx.fill(); ctx.stroke();
-    } else if (barrelCount === 4) { 
+    } else if (barrelCount === 4) { // Twin / Flank arrangement setups
         ctx.rect(0, -16, 38, 14); ctx.rect(0, 2, 38, 14); ctx.fill(); ctx.stroke();
-    } else if (barrelCount === 8) { 
+    } else if (barrelCount === 8) { // Circle Octo-tank layout setups
         for (let i = 0; i < 8; i++) {
             ctx.save(); ctx.rotate(i * Math.PI / 4); ctx.rect(0, -9, 36, 18); ctx.fill(); ctx.stroke(); ctx.restore();
         }
     }
     
+    // Draw central round bubble base shell cover capsule
     ctx.fillStyle = bodyColor;
     ctx.beginPath();
     ctx.arc(0, 0, 22, 0, 2 * Math.PI);
@@ -193,6 +199,7 @@ modeButtons.forEach(button => {
 
         currentActiveMode = button.getAttribute('data-mode');
         
+        // Setup state variable modifications variables adjustments
         if (currentActiveMode === 'sandbox') colorBody.value = "#9842eb";
         else if (currentActiveMode === 'ffa' || currentActiveMode === 'maze') colorBody.value = "#00b2e1";
         else if (currentActiveMode === 'teams2' || currentActiveMode === 'ctf') colorBody.value = colorBlue.value;
@@ -209,22 +216,23 @@ allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview)
 // Execute drawing render run on creation trigger setup
 renderGamePreview();
 
-// Custom Theme Script builder formatted EXACTLY like the user's string
+// Standard configurations script builders output triggers functions 
 function generateThemeScript() {
-    // Dynamic values from your picker menu
-    const strokeSolid = formatToGameHex(colorOutline.value);
-    const canvasBg = formatToGameHex(colorBackground.value);
-    const gridColor = formatToGameHex(colorGrid.value);
-    const barrelColor = formatToGameHex(colorBarrel.value);
-    
-    // Player color mapping dynamically based on active selection
-    const playerColor = formatToGameHex(colorBody.value);
-    const blueTeamColor = formatToGameHex(colorBlue.value);
-    const redTeamColor = formatToGameHex(colorRed.value);
-    
-    // Shape color mapping
-    const squareColor = formatToGameHex(colorSquare.value);
-    const triangleColor = formatToGameHex(colorTriangle.value);
-    const pentagonColor = formatToGameHex(colorPentagon.value);
+    return `// Diep.io Custom Console Theme Script\n` +
+           `net_set_color(3, "${colorBackground.value}"); // Canvas Background\n` +
+           `net_set_color(4, "${colorGrid.value}"); // Grid Lines\n` +
+           `net_set_color(1, "${colorBody.value}"); // Player Tank Body\n` +
+           `net_set_color(0, "${colorBarrel.value}"); // Tank Barrels\n` +
+           `net_set_color(2, "${colorOutline.value}"); // Outlines`;
+}
 
-    // Assembled custom console terminal setup command chain string
+document.getElementById('viewCodeBtn').addEventListener('click', () => {
+    document.getElementById('codeOutput').value = generateThemeScript();
+});
+
+document.getElementById('copyCodeBtn').addEventListener('click', () => {
+    const output = document.getElementById('codeOutput');
+    output.value = generateThemeScript(); output.select();
+    navigator.clipboard.writeText(output.value);
+    alert('Diep.io theme copied!');
+});
