@@ -1,0 +1,273 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.main-title {
+    text-align: center;
+    color: #00b2e1;
+    font-style: italic;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.workspace {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fdfdfd;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
+}
+
+.mode-btn, .sidebar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 2px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.options button {
+    background-color: #fff;
+    color: #000;
+    text-shadow: none;
+    text-transform: uppercase;
+}
+
+.options button:hover {
+    background-color: #f0f0f0;
+}
+
+#codeOutput {
+    width: 90%;
+    height: 100px;
+    margin-top: 10px;
+    resize: none;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+/* PREVIEW SYSTEM */
+.preview-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-preview {
+    width: 550px;
+    height: 350px;
+    border: 3px solid #000;
+    position: relative;
+    overflow: hidden;
+    background-color: #cdcdcd;
+    /* Grid Pattern Graphic representation */
+    background-image: linear-gradient(to right, #b5b5b5 1px, transparent 1px),
+                      linear-gradient(to bottom, #b5b5b5 1px, transparent 1px);
+    background-size: 25px 25px;
+}
+
+.scoreboard {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 120px;
+    background: rgba(0,0,0,0.2);
+    border: 2px solid #000;
+    padding: 5px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.score-bar {
+    height: 8px;
+    background-color: #85e333;
+    margin-top: 3px;
+    border: 1px solid #000;
+}
+
+.game-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Shapes styling */
+.shape {
+    position: absolute;
+    border: 2px solid #555555;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    background-color: #ffe46b;
+    top: 120px;
+    left: 80px;
+    transform: rotate(15deg);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 24px solid #fc7676;
+    border-top: none;
+    background: transparent !important;
+    top: 60px;
+    left: 200px;
+}
+
+.pentagon {
+    width: 24px;
+    height: 24px;
+    background-color: #768cfc;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    top: 180px;
+    right: 120px;
+}
+
+/* Player Tank */
+.tank {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.barrel {
+    width: 45px;
+    height: 18px;
+    background-color: #999999;
+    border: 2px solid #555;
+    position: absolute;
+    top: -9px;
+    left: 0;
+}
+
+.body {
+    width: 36px;
+    height: 36px;
+    background-color: #00b2e1;
+    border: 2px solid #555;
+    border-radius: 50%;
+    position: absolute;
+    top: -18px;
+    left: -18px;
+}
+
+/* User interface items */
+.health-container {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.health-bar-bg {
+    width: 140px;
+    height: 12px;
+    background: #555;
+    border: 2px solid #000;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.health-bar-fill {
+    width: 75%;
+    height: 100%;
+    background-color: #85e333;
+}
+
+.minimap {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #000;
+    background-color: rgba(205,205,205,0.7);
+}
+
+.minimap-dot {
+    width: 4px;
+    height: 4px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: 60%;
+}
+
+/* BOTTOM COLORS BOARD */
+.control-panel {
+    border: 2px solid #000;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #fafafa;
+}
+
+.control-group {
+    min-width: 180px;
+}
+
+.control-group h3 {
+    text-transform: uppercase;
+    font-size: 14px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 3px;
+    margin-top: 0;
+}
+
+.color-picker-row {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+}
+
+.color-picker-row input[type="color"] {
+    border: 1px solid #000;
+    background: none;
+    width: 40px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 0;
+}
+
+.color-picker-row label {
+    font-size: 13px;
+    font-weight: bold;
+}
