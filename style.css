@@ -54,7 +54,7 @@ body {
     transition: transform 0.1s ease;
 }
 
-/* Colors matching your dashboard buttons layout */
+/* Gamemode custom theme colors setup mapping */
 .mode-btn[data-mode="sandbox"] { background-color: #9842eb; }
 .mode-btn[data-mode="ffa"] { background-color: #2be6de; }
 .mode-btn[data-mode="teams2"] { background-color: #85e333; }
