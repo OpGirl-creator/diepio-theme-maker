@@ -118,8 +118,11 @@ function renderGamePreview() {
     // 8. Draw UI Elements text display details over the top
     drawUIOverlay();
     
-    // 9. AUTOMATIC BACKGROUND GENERATION: Instantly fill the output box behind the scenes
-    updateOutputBox();
+    // 9. Update the visible script display textarea box automatically
+    const outputBox = document.getElementById('codeOutput');
+    if (outputBox) {
+        outputBox.value = generateThemeScript();
+    }
 }
 
 // Helper block to build crisp vector math shapes
@@ -193,14 +196,10 @@ function generateThemeScript() {
     return `net_replace_color 2 0xdedede; net_replace_color 15 0x444444; net_replace_color 3 ${blueTeamColor}; net_replace_color 4 ${redTeamColor}; net_replace_color 5 0xbf7ff5; net_replace_color 6 0x00e16e; net_replace_color 17 0xc6c6c6; net_replace_color 12 ${squareColor}; net_replace_color 8 0xfffa00; net_replace_color 7 ${triangleColor}; net_replace_color 16 0xfcc376; net_replace_color 9 0xff1b1b; net_replace_color 10 0x0c73fc; net_replace_color 11 0xf177dd; net_replace_color 14 0xbbbbbb; net_replace_color 1 ${barrelColor}; ren_bar_background_color 0x000000; ren_stroke_solid_color ${strokeSolid}; net_replace_color 13 0x64ff8c; ren_xp_bar_fill_color 0xffde43; ren_score_bar_fill_color 0x43ff91; ren_health_fill_color 0x85e37d; ren_health_background_color 0x000000; ren_grid_color ${gridColor}; ren_minimap_background_color 0xCDCDCD; ren_minimap_border_color 0x797979; ren_background_color ${canvasBg}; ren_border_color 0x000000; ui_replace_colors 0xff9200, 0xff00f8, 0x9c3eff, 0x161fff, 0xffed3f, 0xff0000, 0x88ff41, 0x00f5ff; ren_grid_base_alpha 0; ren_stroke_soft_color_intensity 1; ren_stroke_soft_color true; ren_border_color_alpha 0.1; ren_shadows true; ren_shadow_blur 15.444444; ren_shadow_alpha 0.15; ren_shadow_x 20; ren_shadow_color 0x000000`;
 }
 
-// Function to keep the invisible/visible text fields filled
-function updateOutputBox() {
-    const codeBox = document.getElementById('codeOutput');
-    if (codeBox) {
-        codeBox.value = generateThemeScript();
-    }
-}
-
 // Run the first load drawing loop setup
 renderGamePreview();
 
+// Safe button checker link logic configuration
+const copyBtn = document.getElementById('copyCodeBtn');
+if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
