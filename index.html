@@ -18,8 +18,8 @@
             <button class="mode-btn" data-mode="teams2" style="background-color: #85e333;">2 Teams</button>
             <button class="mode-btn" data-mode="teams4" style="background-color: #f05151;">4 Teams</button>
             <button class="mode-btn" data-mode="maze" style="background-color: #f1b832;">Maze</button>
-            <button class="mode-btn" data-mode="ctf" style="background-color: #3b74e6;">Capture the Flag</button>
-            <button class="mode-btn" data-mode="maze" style="background-color: #f1b832;">Domination</button>
+            <button class="mode-btn" data-mode="ctf" style="background-color: #12a5a5;">Capture the Flag</button>
+            <button class="mode-btn" data-mode="maze" style="background-color: #4a57c8;">Domination</button>
         </div>
 
         <!-- CENTER: LIVE CANVAS PREVIEW -->
@@ -29,10 +29,10 @@
 
         <!-- RIGHT SIDEBAR: OPTIONS -->
         <div class="sidebar options">
-            <h2>Other options</h2>
-            <button id="viewCodeBtn">view code</button>
-            <button id="copyCodeBtn">copy code</button>
+            <h2>Theme Overview</h2>
             <textarea id="codeOutput" readonly placeholder="Your theme script will appear here..."></textarea>
+            <button id="viewCodeBtn">view script</button>
+            <button id="copyCodeBtn">copy script</button>
         </div>
     </div>
 
@@ -40,64 +40,72 @@
     <div class="control-panel">
         <div class="control-group">
             <h3>Tanks</h3>
-            <div class="color-picker-row"><input type="color" id="colorBarrel" value="#999999"><label>Tanks</label></div>
-            <div class="color-picker-row"><input type="color" id="colorBody" value="#00b2e1"><label>TDM</label></div>
-            <div class="color-picker-row"><input type="color" id="colorOutline" value="#555555"><label>Shadow Outline</label></div>
-            <div class="color-picker-row"><input type="color" id="colorOutline" value="#555555"><label>Polygons</label></div>
-            <div class="color-picker-row"><input type="color" id="colorOutline" value="#555555"><label>Background (BG)</label></div>
-            <div class="color-picker-row"><input type="color" id="colorOutline" value="#555555"><label>Score/XP/Minimap</label></div>
-            <div class="color-picker-row"><input type="color" id="colorOutline" value="#555555"><label>UI Colors</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBarrel" value="#999999"><label>Main Body</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBody" value="#00b2e1"><label>Barrels</label></div>
+            <div class="color-picker-row"><input type="color" id="colorOutline" value="#555555"><label>FFA enemy</label></div>
+            <div class="color-picker-row"><input type="color" id="colorOutline" value="#555555"><label>Fallen Boss</label></div>
         </div>
 
         <div class="control-group">
             <h3>TDM</h3>
-            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Canvas BG</label></div>
-            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Grid Line</label></div>
-            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Square Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Triangle Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Pentagon Shape</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Blue Team</label></div>
+            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Red Team</label></div>
+            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Purple Team</label></div>
+            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Green Team</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Dominators</label></div>
         </div>
 
         <div class="control-group">
-            <h3>Shadow/outline</h3>
-            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Canvas BG</label></div>
-            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Grid Line</label></div>
-            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Square Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Triangle Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Pentagon Shape</label></div>
+            <h3>Outline/Shadows</h3>
+            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Outline</label></div>
+            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Shadow</label></div>
+            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Shadow</label></div>
+            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Shadow</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Shadow</label></div>
         </div>
 
         <div class="control-group">
             <h3>Polygons</h3>
-            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Canvas BG</label></div>
-            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Grid Line</label></div>
-            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Square Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Triangle Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Pentagon Shape</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Square</label></div>
+            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Triangle</label></div>
+            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Pentagon</label></div>
+            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Crasher</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Hexagon</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Shiny</label></div>
         </div>
 
         <div class="control-group">
             <h3>Background (BG)</h3>
-            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Canvas BG</label></div>
-            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Grid Line</label></div>
-            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Square Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Triangle Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Pentagon Shape</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Background Color</label></div>
+            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Solid Background</label></div>
+            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Health Color</label></div>
+            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Health BG</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Maze Wall</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Border Color</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Grid Color</label></div>
         </div>
 
         <div class="control-group">
             <h3>Score/XP/Minimap</h3>
-            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Canvas BG</label></div>
-            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Grid Line</label></div>
-            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Square Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Triangle Shape</label></div>
-            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Pentagon Shape</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBackground" value="#cdcdcd"><label>Scoreboard</label></div>
+            <div class="color-picker-row"><input type="color" id="colorGrid" value="#b5b5b5"><label>Minimap BG</label></div>
+            <div class="color-picker-row"><input type="color" id="colorSquare" value="#ffe869"><label>Minimap Border</label></div>
+            <div class="color-picker-row"><input type="color" id="colorTriangle" value="#fc7676"><label>Minimap Arrow</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Score Bar</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>XP Bar</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Bar BG</label></div>
         </div>
 
         <div class="control-group">
             <h3>UI Colors</h3>
-            <div class="color-picker-row"><input type="color" id="colorBlue" value="#00b2e1"><label>Blue Team color</label></div>
-            <div class="color-picker-row"><input type="color" id="colorRed" value="#f14e54"><label>Red Team color</label></div>
+            <div class="color-picker-row"><input type="color" id="colorBlue" value="#00b2e1"><label>Health Regen</label></div>
+            <div class="color-picker-row"><input type="color" id="colorRed" value="#f14e54"><label>Max Health</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Body Damage</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Bullet Speed</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Penetration</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Bullet Damage</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Reload</label></div>
+            <div class="color-picker-row"><input type="color" id="colorPentagon" value="#768cfc"><label>Movement Speed</label></div>
         </div>
     </div>
 
