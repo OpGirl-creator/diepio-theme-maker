@@ -101,15 +101,18 @@ body {
     padding: 20px;
     border-radius: 8px;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between; /* Changed from space-around for cleaner edge alignment */
+    flex-wrap: nowrap;              /* CHANGED: Prevents items from dropping to a new row */
     background-color: #2a2a35;
-    max-width: 1060px;
+    max-width: 100%;                /* CHANGED: Expanded from 1060px to allow full-width growth */
     margin: 0 auto;
+    gap: 15px;                      /* ADDED: Puts a safe gap between columns so they don't touch */
+    overflow-x: auto;               /* ADDED: Safeguard fallback to scroll horizontally on small screens */
 }
 
 .control-group {
-    min-width: 220px;
+    flex: 1;                        /* ADDED: Forces all 7 columns to distribute width perfectly evenly */
+    min-width: 140px;               /* CHANGED: Lowered from 220px so 7 items can fit side-by-side */
 }
 
 .control-group h3 {
