@@ -22,7 +22,9 @@ body {
 }
 
 .sidebar {
-    width: 200px;
+    flex: 1;                /* CHANGED: Allows the sidebar to expand and fill empty horizontal space */
+    min-width: 280px;       /* CHANGED: Boosted from 200px so the buttons and text box have breathing room */
+    max-width: 450px;       /* ADDED: A limit so it doesn't stretch awkwardly wide on massive screens */
     border: 2px solid #333;
     padding: 15px;
     border-radius: 8px;
@@ -68,15 +70,15 @@ body {
 
 #codeOutput {
     width: 100%;
-    height: 120px;
-    margin-top: 15px;
+    height: 180px;          /* CHANGED: Increased from 120px to show more rows of code at once */
+    margin: 15px 0;         /* CHANGED: Adjusted margins to space it cleanly between the title and buttons */
     background: #111;
     border: 1px solid #444;
     color: #a7f3d0;
     resize: none;
     font-family: monospace;
-    font-size: 11px;
-    padding: 5px;
+    font-size: 12px;        /* CHANGED: Bumped up slightly from 11px for better code readability */
+    padding: 10px;          /* CHANGED: Increased padding so text doesn't hug the inner edges */
     box-sizing: border-box;
     border-radius: 4px;
 }
