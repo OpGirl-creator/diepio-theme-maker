@@ -50,11 +50,11 @@ const outline = document.getElementById('outline');
 const shadow = document.getElementById('shadow');
 
 // Global Trackers for Teams
-const colorGreen = "#00e676";
-const colorPurple = "#bf5fff";
+const green = "#00e676";
+const purple = "#bf5fff";
 
 // Track the current active mode globally
-let currentActiveMode = 'sandbox'; 
+let currentActiveMode = 'ffa'; 
 
 // Render Loop Function (Draws layout styles based on the chosen mode)
 function renderGamePreview() {
@@ -75,19 +75,19 @@ function renderGamePreview() {
         
         // Top-Left Tank (Orange Team Base)
         // Positioned at 25% Width, 25% Height
-        drawTank(halfW / 2, halfH / 2, colorBlue.value);
+        drawTank(halfW / 2, halfH / 2, blue.value);
         
         // Top-Right Tank (Purple Team Base)
         // Positioned at 75% Width, 25% Height
-        drawTank(halfW + (halfW / 2), halfH / 2, colorPurple.value);
+        drawTank(halfW + (halfW / 2), halfH / 2, purple.value);
         
         // Bottom-Left Tank (Green Team Base)
         // Positioned at 25% Width, 75% Height
-        drawTank(halfW / 2, halfH + (halfH / 2), colorGreen.value);
+        drawTank(halfW / 2, halfH + (halfH / 2), green.value);
         
         // Bottom-Right Tank (Pink Team Base)
         // Positioned at 75% Width, 75% Height
-        drawTank(halfW + (halfW / 2), halfH + (halfH / 2), colorRed.value);
+        drawTank(halfW + (halfW / 2), halfH + (halfH / 2), red.value);
     }
 
 
