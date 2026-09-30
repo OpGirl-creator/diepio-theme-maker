@@ -3,24 +3,24 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Color Input References
-const mainBody = document.getElementById('main');
-const barrels = document.getElementById('barrel');
+const mainBody = document.getElementById('mainBody');
+const barrels = document.getElementById('barrels');
 const enemy = document.getElementById('enemy');
 const fallen = document.getElementById('fallen');
 
-const blueTeam = document.getElementById('blue');
-const redTeam = document.getElementById('red');
-const purpleTeam = document.getElementById('purple');
-const greenTeam = document.getElementById('green');
+const blueTeam = document.getElementById('blueTeam');
+const redTeam = document.getElementById('redTeam');
+const purpleTeam = document.getElementById('purpleTeam');
+const greenTeam = document.getElementById('greenTeam');
 const dominator = document.getElementById('dominator');
 
-const backgroundColor = document.getElementById('background');
-const solidColor = document.getElementById('solid');
-const healthColor = document.getElementById('health');
+const backgroundColor = document.getElementById('backgroundColor');
+const solidColor = document.getElementById('solidColor');
+const healthColor = document.getElementById('healthColor');
 const healthBG = document.getElementById('healthBG');
 const wall = document.getElementById('wall');
-const borderColor = document.getElementById('border');
-const gridColor = document.getElementById('grid');
+const borderColor = document.getElementById('borderColor');
+const gridColor = document.getElementById('gridColor');
 
 const regen = document.getElementById('regen');
 const max = document.getElementById('max');
@@ -39,15 +39,15 @@ const scoreBar = document.getElementById('scoreBar');
 const xpBar = document.getElementById('xpBar');
 const barBG = document.getElementById('barBG');
 
-const squareS = document.getElementById('square');
-const triangleS = document.getElementById('triangle');
-const pentagonS = document.getElementById('pentagon');
-const crasherS = document.getElementById('crasher');
-const hexagonS = document.getElementById('hexagon');
-const shinyS = document.getElementById('shiny');
+const squareS = document.getElementById('squareS');
+const triangleS = document.getElementById('triangleS');
+const pentagonS = document.getElementById('pentagonS');
+const crasherS = document.getElementById('crasherS');
+const hexagonS = document.getElementById('hexagonS');
+const shinyS = document.getElementById('shinyS');
 
-const outline = document.getElementById('outline');
-const shadow = document.getElementById('shadow');
+const outlines = document.getElementById('outlines');
+const shadows = document.getElementById('shadows');
 
 // Global Trackers for Teams
 const greenTeam = "#00e676";
