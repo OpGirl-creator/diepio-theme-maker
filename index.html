@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diep.io Theme Maker (Simplified)</title>
+    <title>Diep.io Theme Maker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1 class="main-title">Diep.io Theme Maker</h1>
+    
     <div class="workspace">
         <!-- LEFT SIDEBAR: GAMEMODES -->
         <div class="sidebar gamemodes">
@@ -21,25 +22,38 @@
             <canvas id="gameCanvas" width="850" height="400"></canvas>
         </div>
 
-        <!-- RIGHT SIDEBAR: OPTIONS -->
+        <!-- RIGHT SIDEBAR: THEME OVERVIEW -->
         <div class="sidebar options">
             <h2>Theme Overview</h2>
-            <textarea id="codeOutput" readonly placeholder="Your theme script will appear here..."></textarea>
-            <button id="viewCodeBtn">view script</button>
-            <button id="copyCodeBtn">copy script</button>
+            <textarea id="codeOutput" readonly placeholder="Your script will appear here..."></textarea>
+            <button id="viewCodeBtn">VIEW SCRIPT</button>
+            <button id="copyCodeBtn">COPY SCRIPT</button>
         </div>
     </div>
 
-    <!-- BOTTOM CONTROL PANEL -->
+    <!-- BOTTOM CONTROL PANEL: ONLY TANKS CATEGORY -->
     <div class="control-panel">
         <div class="control-group">
-            <h3>Tanks & Polygons</h3>
-            <div class="color-picker-row"><input type="color" id="main" value="#00b2e1"><label>Main Body</label></div>
-            <div class="color-picker-row"><input type="color" id="barrel" value="#999999"><label>Barrels</label></div>
-            <div class="color-picker-row"><input type="color" id="enemy" value="#f14e54"><label>FFA enemy / Red Team</label></div>
-            <div class="color-picker-row"><input type="color" id="square" value="#ffe869"><label>Square Color</label></div>
+            <h3>Tanks</h3>
+            <div class="color-picker-row">
+                <input type="color" id="main" value="#00b2e1">
+                <label>Main Body</label>
+            </div>
+            <div class="color-picker-row">
+                <input type="color" id="barrel" value="#999999">
+                <label>Barrels</label>
+            </div>
+            <div class="color-picker-row">
+                <input type="color" id="enemy" value="#f14e54">
+                <label>FFA enemy</label>
+            </div>
+            <div class="color-picker-row">
+                <input type="color" id="fallen" value="#999999">
+                <label>Fallen Boss</label>
+            </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
