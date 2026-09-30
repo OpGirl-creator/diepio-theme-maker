@@ -2,7 +2,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-// Color Input References
+// Color Input for Reference
 const colorBarrel = document.getElementById('colorBarrel');
 const colorBody = document.getElementById('colorBody');
 const colorOutline = document.getElementById('colorOutline');
@@ -82,12 +82,12 @@ function renderGamePreview() {
         ctx.lineWidth = lineWidth;
         
         // Main left wall partition border block
-        ctx.beginPath(); ctx.rect(0, 0, 200, 80); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.rect(0, 80, 50, 240); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.rect(0, 320, 400, 80); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(200, 0, 200, 80); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(200, 80, 50, 240); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(200, 320, 400, 80); ctx.fill(); ctx.stroke();
         
         // Top floating maze divider wall
-        ctx.beginPath(); ctx.rect(260, 0, 140, 110); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(400, 0, 140, 110); ctx.fill(); ctx.stroke();
     }
 
     // Set configuration layouts for dynamic geometric shapes
@@ -218,8 +218,7 @@ renderGamePreview();
 
 // Standard configurations script builders output triggers functions 
 function generateThemeScript() {
-    return `// Diep.io Custom Console Theme Script\n` +
-           `net_set_color(3, "${colorBackground.value}"); // Canvas Background\n` +
+    return `net_set_color(3, "${colorBackground.value}"); // Canvas Background\n` +
            `net_set_color(4, "${colorGrid.value}"); // Grid Lines\n` +
            `net_set_color(1, "${colorBody.value}"); // Player Tank Body\n` +
            `net_set_color(0, "${colorBarrel.value}"); // Tank Barrels\n` +
