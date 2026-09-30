@@ -3,9 +3,9 @@
     padding: 20px;
     border-radius: 8px;
     display: flex;
-    justify-content: center; /* Center the single column */
+    justify-content: center;
     background-color: #2a2a35;
-    max-width: 400px;        /* Restrict width since there's only 1 group */
+    max-width: 400px;
     margin: 0 auto;
 }
 .control-group {
