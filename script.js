@@ -3,24 +3,24 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Color Input References
-const main = document.getElementById('main');
-const barrel = document.getElementById('barrel');
+const mainBody = document.getElementById('main');
+const barrels = document.getElementById('barrel');
 const enemy = document.getElementById('enemy');
 const fallen = document.getElementById('fallen');
 
-const blue = document.getElementById('blue');
-const red = document.getElementById('red');
-const purple = document.getElementById('purple');
-const green = document.getElementById('green');
+const blueTeam = document.getElementById('blue');
+const redTeam = document.getElementById('red');
+const purpleTeam = document.getElementById('purple');
+const greenTeam = document.getElementById('green');
 const dominator = document.getElementById('dominator');
 
-const background = document.getElementById('background');
-const solid = document.getElementById('solid');
-const health = document.getElementById('health');
+const backgroundColor = document.getElementById('background');
+const solidColor = document.getElementById('solid');
+const healthColor = document.getElementById('health');
 const healthBG = document.getElementById('healthBG');
 const wall = document.getElementById('wall');
-const border = document.getElementById('border');
-const grid = document.getElementById('grid');
+const borderColor = document.getElementById('border');
+const gridColor = document.getElementById('grid');
 
 const regen = document.getElementById('regen');
 const max = document.getElementById('max');
@@ -39,28 +39,27 @@ const scoreBar = document.getElementById('scoreBar');
 const xpBar = document.getElementById('xpBar');
 const barBG = document.getElementById('barBG');
 
-const square = document.getElementById('square');
-const triangle = document.getElementById('triangle');
-const pentagon = document.getElementById('pentagon');
-const crasher = document.getElementById('crasher');
-const hexagon = document.getElementById('hexagon');
-const shiny = document.getElementById('shiny');
+const squareS = document.getElementById('square');
+const triangleS = document.getElementById('triangle');
+const pentagonS = document.getElementById('pentagon');
+const crasherS = document.getElementById('crasher');
+const hexagonS = document.getElementById('hexagon');
+const shinyS = document.getElementById('shiny');
 
 const outline = document.getElementById('outline');
 const shadow = document.getElementById('shadow');
 
 // Global Trackers for Teams
-const green = "#00e676";
-const purple = "#bf5fff";
+const greenTeam = "#00e676";
+const purpleTeam = "#bf5fff";
 
 // Track the current active mode globally
 let currentActiveMode = 'ffa'; 
 
 // Render Loop Function (Draws layout styles based on the chosen mode)
 function renderGamePreview() {
-    const bg = background.value;
-    const grid = grid.value;
-    const border = outline.value;
+    const bg = backgroundColor.value;
+    const grid = gridColor.value;
     const lineWidth = 3.5; 
 
     // 1. Draw standard background base
