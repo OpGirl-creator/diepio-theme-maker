@@ -3,63 +3,29 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Color Input References
-const mainBody = document.getElementById('mainBody');
-const barrels = document.getElementById('barrels');
-const enemy = document.getElementById('enemy');
-const fallen = document.getElementById('fallen');
-
-const blueTeam = document.getElementById('blueTeam');
-const redTeam = document.getElementById('redTeam');
-const purpleTeam = document.getElementById('purpleTeam');
-const greenTeam = document.getElementById('greenTeam');
-const dominator = document.getElementById('dominator');
-
-const backgroundColor = document.getElementById('backgroundColor');
-const solidColor = document.getElementById('solidColor');
-const healthColor = document.getElementById('healthColor');
-const healthBG = document.getElementById('healthBG');
-const wall = document.getElementById('wall');
-const borderColor = document.getElementById('borderColor');
-const gridColor = document.getElementById('gridColor');
-
-const regen = document.getElementById('regen');
-const max = document.getElementById('max');
-const bodyDamage = document.getElementById('bodyDamage');
-const bulletSpeed = document.getElementById('bulletSpeed');
-const penetration = document.getElementById('penetration');
-const bulletDamage = document.getElementById('bulletDamage');
-const reload = document.getElementById('reload');
-const movement = document.getElementById('movement');
-
-const scoreboard = document.getElementById('scoreboard');
-const minimapBG = document.getElementById('minimapBG');
-const minimapBorder = document.getElementById('minimapBorder');
-const minimapArrow = document.getElementById('minimapArrow');
-const scoreBar = document.getElementById('scoreBar');
-const xpBar = document.getElementById('xpBar');
-const barBG = document.getElementById('barBG');
-
-const squareS = document.getElementById('squareS');
-const triangleS = document.getElementById('triangleS');
-const pentagonS = document.getElementById('pentagonS');
-const crasherS = document.getElementById('crasherS');
-const hexagonS = document.getElementById('hexagonS');
-const shinyS = document.getElementById('shinyS');
-
-const outlines = document.getElementById('outlines');
-const shadows = document.getElementById('shadows');
+const colorBarrel = document.getElementById('colorBarrel');
+const colorBody = document.getElementById('colorBody');
+const colorOutline = document.getElementById('colorOutline');
+const colorBackground = document.getElementById('colorBackground');
+const colorGrid = document.getElementById('colorGrid');
+const colorSquare = document.getElementById('colorSquare');
+const colorTriangle = document.getElementById('colorTriangle');
+const colorPentagon = document.getElementById('colorPentagon');
+const colorBlue = document.getElementById('colorBlue');
+const colorRed = document.getElementById('colorRed');
 
 // Global Trackers for Teams
-const greenTeam = "#00e676";
-const purpleTeam = "#bf5fff";
+const colorGreen = "#00e676";
+const colorPurple = "#bf5fff";
 
 // Track the current active mode globally
-let currentActiveMode = 'ffa'; 
+let currentActiveMode = 'sandbox'; 
 
 // Render Loop Function (Draws layout styles based on the chosen mode)
 function renderGamePreview() {
-    const bg = backgroundColor.value;
-    const grid = gridColor.value;
+    const bg = colorBackground.value;
+    const grid = colorGrid.value;
+    const border = colorOutline.value;
     const lineWidth = 3.5; 
 
     // 1. Draw standard background base
@@ -67,28 +33,26 @@ function renderGamePreview() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // 2. IF 4 TEAMS MODE IS ACTIVE: Color the background quadrants
-    // 3. DRAW TEAMS4 TANKS: Center one tank inside each quadrant
     if (currentActiveMode === 'teams4') {
         const halfW = canvas.width / 2;
         const halfH = canvas.height / 2;
         
-        // Top-Left Tank (Orange Team Base)
-        // Positioned at 25% Width, 25% Height
-        drawTank(halfW / 2, halfH / 2, blue.value);
+        // Top-Left (Blue Team Base Area) - tinted subtly
+        ctx.fillStyle = colorBlue.value + "22"; // Add transparency
+        ctx.fillRect(0, 0, halfW, halfH);
         
-        // Top-Right Tank (Purple Team Base)
-        // Positioned at 75% Width, 25% Height
-        drawTank(halfW + (halfW / 2), halfH / 2, purple.value);
+        // Top-Right (Purple Team Base Area)
+        ctx.fillStyle = colorPurple + "22";
+        ctx.fillRect(halfW, 0, halfW, halfH);
         
-        // Bottom-Left Tank (Green Team Base)
-        // Positioned at 25% Width, 75% Height
-        drawTank(halfW / 2, halfH + (halfH / 2), green.value);
+        // Bottom-Left (Green Team Base Area)
+        ctx.fillStyle = colorGreen + "22";
+        ctx.fillRect(0, halfH, halfW, halfH);
         
-        // Bottom-Right Tank (Pink Team Base)
-        // Positioned at 75% Width, 75% Height
-        drawTank(halfW + (halfW / 2), halfH + (halfH / 2), red.value);
+        // Bottom-Right (Red Team Base Area)
+        ctx.fillStyle = colorRed.value + "22";
+        ctx.fillRect(halfW, halfH, halfW, halfH);
     }
-
 
     // 3. Draw Math Gridlines Background matching
     ctx.strokeStyle = grid;
@@ -135,10 +99,10 @@ function renderGamePreview() {
     drawShape(120, 140, 0.3, colorSquare.value, 'square');
     drawShape(340, 130, -0.2, colorTriangle.value, 'triangle');
     drawShape(410, 280, 0.5, colorSquare.value, 'square');
-    drawShape(480, 200, 0.1, colorPentagon.value, 'pentagon');
+    drawShape(520, 330, 0.1, colorTriangle.value, 'triangle');
 
     if (currentActiveMode !== 'maze') {
-        drawShape(480, 200, 0.1, colorPentagon.value, 'pentagon');
+        drawShape(480, 90, 0.1, colorPentagon.value, 'pentagon');
     }
 
     // 7. Draw the appropriate tanks based on the selected game mode
