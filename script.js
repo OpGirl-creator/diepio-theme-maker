@@ -99,10 +99,10 @@ function renderGamePreview() {
     drawShape(120, 140, 0.3, colorSquare.value, 'square');
     drawShape(340, 130, -0.2, colorTriangle.value, 'triangle');
     drawShape(410, 280, 0.5, colorSquare.value, 'square');
-    drawShape(800, 390, 0.6, colorHexagon.value, 'hexagon');
+    drawShape(480, 200, 0.1, colorPentagon.value, 'pentagon');
 
     if (currentActiveMode !== 'maze') {
-        drawShape(480, 90, 0.1, colorPentagon.value, 'pentagon');
+        drawShape(480, 200, 0.1, colorPentagon.value, 'pentagon');
     }
 
     // 7. Draw the appropriate tanks based on the selected game mode
