@@ -99,7 +99,7 @@ function renderGamePreview() {
     drawShape(120, 140, 0.3, colorSquare.value, 'square');
     drawShape(340, 130, -0.2, colorTriangle.value, 'triangle');
     drawShape(410, 280, 0.5, colorSquare.value, 'square');
-    drawShape(520, 330, 0.1, colorTriangle.value, 'triangle');
+    drawShape(800, 390, 0.6, colorHexagon.value, 'hexagon');
 
     if (currentActiveMode !== 'maze') {
         drawShape(480, 90, 0.1, colorPentagon.value, 'pentagon');
