@@ -82,9 +82,9 @@ function renderGamePreview() {
         ctx.lineWidth = lineWidth;
         
         // Main left wall partition border block
-        ctx.beginPath(); ctx.rect(200, 0, 400, 80); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.rect(200, 80, 400, 240); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.rect(200, 320, 800, 80); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(0, 0, 600, 80); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(0, 80, 600, 240); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(0, 320, 1000, 80); ctx.fill(); ctx.stroke();
         
         // Top floating maze divider wall
         ctx.beginPath(); ctx.rect(600, 0, 140, 110); ctx.fill(); ctx.stroke();
