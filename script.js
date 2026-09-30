@@ -3,7 +3,7 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Color Input References
-const colorBarrel = document.getElementById('colorBarrel');
+const main = document.getElementById('main');
 const colorBody = document.getElementById('colorBody');
 const colorOutline = document.getElementById('colorOutline');
 const colorBackground = document.getElementById('colorBackground');
@@ -23,9 +23,9 @@ let currentActiveMode = 'sandbox';
 
 // Render Loop Function (Draws layout styles based on the chosen mode)
 function renderGamePreview() {
-    const bg = colorBackground.value;
-    const grid = colorGrid.value;
-    const border = colorOutline.value;
+    const bg = background.value;
+    const grid = grid.value;
+    const border = outline.value;
     const lineWidth = 3.5; 
 
     // 1. Draw standard background base
