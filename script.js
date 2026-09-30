@@ -2,7 +2,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-// Color Input for Reference
+// Color Input References
 const colorBarrel = document.getElementById('colorBarrel');
 const colorBody = document.getElementById('colorBody');
 const colorOutline = document.getElementById('colorOutline');
@@ -32,28 +32,27 @@ function renderGamePreview() {
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 3. DRAW TEAMS4 TANKS: Center one tank inside each quadrant
+    // 2. IF 4 TEAMS MODE IS ACTIVE: Color the background quadrants
     if (currentActiveMode === 'teams4') {
         const halfW = canvas.width / 2;
         const halfH = canvas.height / 2;
         
-        // Top-Left Tank (Orange Team Base)
-        // Positioned at 25% Width, 25% Height
-        drawTank(halfW / 2, halfH / 2, colorOrange.value);
+        // Top-Left (Blue Team Base Area) - tinted subtly
+        ctx.fillStyle = colorBlue.value + "22"; // Add transparency
+        ctx.fillRect(0, 0, halfW, halfH);
         
-        // Top-Right Tank (Purple Team Base)
-        // Positioned at 75% Width, 25% Height
-        drawTank(halfW + (halfW / 2), halfH / 2, colorPurple.value);
+        // Top-Right (Purple Team Base Area)
+        ctx.fillStyle = colorPurple + "22";
+        ctx.fillRect(halfW, 0, halfW, halfH);
         
-        // Bottom-Left Tank (Green Team Base)
-        // Positioned at 25% Width, 75% Height
-        drawTank(halfW / 2, halfH + (halfH / 2), colorGreen.value);
+        // Bottom-Left (Green Team Base Area)
+        ctx.fillStyle = colorGreen + "22";
+        ctx.fillRect(0, halfH, halfW, halfH);
         
-        // Bottom-Right Tank (Pink Team Base)
-        // Positioned at 75% Width, 75% Height
-        drawTank(halfW + (halfW / 2), halfH + (halfH / 2), colorRed.value);
+        // Bottom-Right (Red Team Base Area)
+        ctx.fillStyle = colorRed.value + "22";
+        ctx.fillRect(halfW, halfH, halfW, halfH);
     }
-
 
     // 3. Draw Math Gridlines Background matching
     ctx.strokeStyle = grid;
@@ -83,10 +82,12 @@ function renderGamePreview() {
         ctx.lineWidth = lineWidth;
         
         // Main left wall partition border block
-        ctx.beginPath(); ctx.rect(0, 320, 1000, 80); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(0, 0, 200, 80); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(0, 80, 50, 240); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(0, 320, 400, 80); ctx.fill(); ctx.stroke();
         
         // Top floating maze divider wall
-        ctx.beginPath(); ctx.rect(600, 0, 140, 110); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.rect(260, 0, 140, 110); ctx.fill(); ctx.stroke();
     }
 
     // Set configuration layouts for dynamic geometric shapes
@@ -217,7 +218,8 @@ renderGamePreview();
 
 // Standard configurations script builders output triggers functions 
 function generateThemeScript() {
-    return `net_set_color(3, "${colorBackground.value}"); // Canvas Background\n` +
+    return `// Diep.io Custom Console Theme Script\n` +
+           `net_set_color(3, "${colorBackground.value}"); // Canvas Background\n` +
            `net_set_color(4, "${colorGrid.value}"); // Grid Lines\n` +
            `net_set_color(1, "${colorBody.value}"); // Player Tank Body\n` +
            `net_set_color(0, "${colorBarrel.value}"); // Tank Barrels\n` +
