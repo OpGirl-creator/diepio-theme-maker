@@ -1,31 +1,30 @@
-// Canvas Initialization
+// Canvas Setup
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-// Color Input References
+// Element Hook References
 const colorMain = document.getElementById('main');
 const colorBarrel = document.getElementById('barrel');
 const colorEnemy = document.getElementById('enemy');
-const colorSquare = document.getElementById('square');
+const colorFallen = document.getElementById('fallen');
 
-// Hardcoded Environment Colors to perfectly match standard Diep.io
+// Constants matching native Diep.io style designs
 const colorBackground = "#cdcdcd";
-const colorGridLines = "#c4c4c4"; // Subtle grey grid lines
-const colorOutline = "#555555";   // Standard thick asset outline
+const colorGridLines = "#c4c4c4";
+const colorOutline = "#555555";
 
-let currentActiveMode = 'ffa'; 
+let currentActiveMode = 'ffa';
 
-// Render Loop Function
+// Main Canvas Render Pipeline
 function renderGamePreview() {
-    // 1. Draw solid arena floor base
+    // 1. Draw Arena Background Floor
     ctx.fillStyle = colorBackground;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // 2. Draw Diep.io-style grid system
+
+    // 2. Draw standard Diep.io-style grid system
     ctx.strokeStyle = colorGridLines;
     ctx.lineWidth = 1.0;
-    const gridSpacing = 24; // Diep.io grid cells are roughly this density relative to tanks
-    
+    const gridSpacing = 24; 
     for (let x = 0; x < canvas.width; x += gridSpacing) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
     }
@@ -33,77 +32,80 @@ function renderGamePreview() {
         ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
     }
 
-    // Set configuration variables for outline borders
+    // Set configuration variables for vector outlines
     ctx.strokeStyle = colorOutline;
-    ctx.lineWidth = 3.5; // Distinct thick Diep.io lines
+    ctx.lineWidth = 3.5; 
     ctx.lineJoin = "round";
 
-    // 3. Draw a Collectible Shiny Square on the Arena Floor
-    // Placed smoothly near the middle (X: 425, Y: 140)
-    drawShape(425, 140, 0.4, colorSquare.value);
+    // 3. Draw a crisp yellow polygon square in center arena area
+    drawSquareElement(425, 130, 0.4, "#ffe869");
 
-    // 4. Draw Interactive Custom Tank Formations
+    // 4. Draw a Fallen Boss polygon representation leveraging your color input
+    drawFallenBossElement(425, 280, -0.2, colorFallen.value);
+
+    // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup
     if (currentActiveMode === 'teams2') {
-        // Blue Team Player vs Red Team Twin Tank Arrangement
-        drawTank(250, 230, -0.1, colorMain.value, 1);    
-        drawTank(580, 210, 3.0, colorEnemy.value, 2);    
+        // Player Tank vs Twin Cannon Team Enemy Tank
+        drawTank(220, 200, -0.1, colorMain.value, 1);
+        drawTank(620, 180, 3.0, colorEnemy.value, 2);
     } else {
-        // Standard FFA Matchup: Player vs Basic Red Tank Enemy
-        drawTank(250, 230, -0.1, colorMain.value, 1);    
-        drawTank(580, 210, 3.0, colorEnemy.value, 1);    
+        // Player Tank vs standard FFA Single Cannon Enemy
+        drawTank(220, 200, -0.1, colorMain.value, 1);
+        drawTank(620, 180, 3.0, colorEnemy.value, 1);
     }
-
-    // 5. Draw UI Mode Title Card Top Left
-    ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
-    ctx.beginPath(); ctx.roundRect(15, 15, 120, 30, 4); ctx.fill();
-    ctx.fillStyle = "#ffffff"; ctx.font = "bold 12px Arial";
-    ctx.fillText(currentActiveMode === 'teams2' ? "Mode: 2 Teams" : "Mode: FFA", 25, 34);
 }
 
-// Vector Polygon Renderer for Square
-function drawShape(x, y, angle, color) {
+// Vector Square Builder Module
+function drawSquareElement(x, y, angle, color) {
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(angle);
     ctx.fillStyle = color;
-    
     ctx.beginPath();
-    // Diep squares are standard centered bounding rectangles
-    ctx.rect(-18, -18, 36, 36); 
-    ctx.fill(); 
-    ctx.stroke();
-    
+    ctx.rect(-16, -16, 32, 32);
+    ctx.fill(); ctx.stroke();
     ctx.restore();
 }
 
-// Vector Tank Model Assembly Module
+// Vector Fallen Pentagonal Boss Builder Module
+function drawFallenBossElement(x, y, angle, color) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++) {
+        let a = (i * 2 * Math.PI / 5) - Math.PI / 2;
+        let px = 28 * Math.cos(a); let py = 28 * Math.sin(a);
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+}
+
+// Vector Tank Builder Module
 function drawTank(x, y, angle, bodyColor, barrelCount) {
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(angle);
-    
     ctx.fillStyle = colorBarrel.value;
-    
+
     ctx.beginPath();
     if (barrelCount === 1) {
-        // Basic Barrel
         ctx.rect(0, -13, 44, 26); ctx.fill(); ctx.stroke();
-    } else if (barrelCount === 2) { 
-        // Twin Cannon Arrangement Setup
+    } else if (barrelCount === 2) {
         ctx.rect(0, -19, 42, 15); ctx.rect(0, 4, 42, 15); ctx.fill(); ctx.stroke();
     }
-    
-    // Core Round Bubble Shell Base
+
     ctx.fillStyle = bodyColor;
     ctx.beginPath();
     ctx.arc(0, 0, 24, 0, 2 * Math.PI);
-    ctx.fill(); 
-    ctx.stroke();
-    
+    ctx.fill(); ctx.stroke();
     ctx.restore();
 }
 
-// Gamemode Switch Route Logic Hooks
+// Gamemode Active Click Routing Mechanics
 const modeButtons = document.querySelectorAll('.mode-btn');
 modeButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -114,21 +116,20 @@ modeButtons.forEach(button => {
     });
 });
 
-// Dynamic Configuration Inputs Sync Pipeline
-const allPickers = [colorMain, colorBarrel, colorEnemy, colorSquare];
+// Dynamic Inputs Change Render Hooks Pipeline
+const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen];
 allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
 
-// Execute drawing render run on creation runtime start
+// Execute initialization drawing array map loop on start
 renderGamePreview();
 
-// Script Output Generator Engine
+// Theme Script Generation Logic Module
 function generateThemeScript() {
     return `// Diep.io Custom Console Theme Script\n` +
            `net_set_color(1, "${colorMain.value}"); // Player Tank Body\n` +
            `net_set_color(0, "${colorBarrel.value}"); // Tank Barrels\n` +
-           `net_set_color(2, "${colorOutline.value}"); // Asset Outline Borders\n` +
-           `net_set_color(12, "${colorEnemy.value}"); // Enemy Arena Target Color\n` +
-           `net_set_color(16, "${colorSquare.value}"); // Square Polygon Grid Color`;
+           `net_set_color(12, "${colorEnemy.value}"); // Target Enemy Color\n` +
+           `net_set_color(15, "${colorFallen.value}"); // Fallen Boss Color`;
 }
 
 document.getElementById('viewCodeBtn').addEventListener('click', () => {
@@ -137,8 +138,8 @@ document.getElementById('viewCodeBtn').addEventListener('click', () => {
 
 document.getElementById('copyCodeBtn').addEventListener('click', () => {
     const output = document.getElementById('codeOutput');
-    output.value = generateThemeScript(); 
+    output.value = generateThemeScript();
     output.select();
     navigator.clipboard.writeText(output.value);
-    alert('Theme copied to clipboard!');
+    alert('Theme script copied to clipboard!');
 });
