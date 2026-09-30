@@ -32,27 +32,28 @@ function renderGamePreview() {
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 2. IF 4 TEAMS MODE IS ACTIVE: Color the background quadrants
+    // 3. DRAW TEAMS4 TANKS: Center one tank inside each quadrant
     if (currentActiveMode === 'teams4') {
         const halfW = canvas.width / 2;
         const halfH = canvas.height / 2;
         
-        // Top-Left (Blue Team Base Area) - tinted subtly
-        ctx.fillStyle = colorBlue.value + "22"; // Add transparency
-        ctx.fillRect(0, 0, halfW, halfH);
+        // Top-Left Tank (Orange Team Base)
+        // Positioned at 25% Width, 25% Height
+        drawTank(halfW / 2, halfH / 2, colorOrange.value);
         
-        // Top-Right (Purple Team Base Area)
-        ctx.fillStyle = colorPurple + "22";
-        ctx.fillRect(halfW, 0, halfW, halfH);
+        // Top-Right Tank (Purple Team Base)
+        // Positioned at 75% Width, 25% Height
+        drawTank(halfW + (halfW / 2), halfH / 2, colorPurple.value);
         
-        // Bottom-Left (Green Team Base Area)
-        ctx.fillStyle = colorGreen + "22";
-        ctx.fillRect(0, halfH, halfW, halfH);
+        // Bottom-Left Tank (Green Team Base)
+        // Positioned at 25% Width, 75% Height
+        drawTank(halfW / 2, halfH + (halfH / 2), colorGreen.value);
         
-        // Bottom-Right (Red Team Base Area)
-        ctx.fillStyle = colorRed.value + "22";
-        ctx.fillRect(halfW, halfH, halfW, halfH);
+        // Bottom-Right Tank (Pink Team Base)
+        // Positioned at 75% Width, 75% Height
+        drawTank(halfW + (halfW / 2), halfH + (halfH / 2), colorRed.value);
     }
+
 
     // 3. Draw Math Gridlines Background matching
     ctx.strokeStyle = grid;
@@ -82,8 +83,6 @@ function renderGamePreview() {
         ctx.lineWidth = lineWidth;
         
         // Main left wall partition border block
-        ctx.beginPath(); ctx.rect(0, 0, 600, 80); ctx.fill(); ctx.stroke();
-        ctx.beginPath(); ctx.rect(0, 80, 600, 240); ctx.fill(); ctx.stroke();
         ctx.beginPath(); ctx.rect(0, 320, 1000, 80); ctx.fill(); ctx.stroke();
         
         // Top floating maze divider wall
