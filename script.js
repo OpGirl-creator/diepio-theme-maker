@@ -260,7 +260,7 @@ return `// Diep.io Custom Console Theme Script\n` +
 `net_set_color(0, "${barrel}"); // Tank Barrels\n` +
 `net_set_color(12, "${enemy}"); // Target Enemy Color\n` +
 `net_set_color(15, "${fallen}"); // Fallen Boss Color\n` +
-  `net_set_color(15, "${square}"); // Fallen Boss Color\n`
+  `net_set_color(17, "${square}"); // Fallen Boss Color\n`
 }
 
 
