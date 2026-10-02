@@ -44,6 +44,8 @@ drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
+  drawRegen(200, 100, 2.8, colorFallen.value);
+
 // side boxs
 drawNameHUD("YOUR_NAME");
 
@@ -158,8 +160,7 @@ ctx.restore();
 
 
 // Vector Hexagonal Builder Module
-// Updated Hexagonal Builder Module with size parameter
-function drawHexagonElement(x, y, angle, color, size = 24) { // 🔥 Added size parameter (defaults to 24)
+function drawHexagonElement(x, y, angle, color, size = 35) { // 🔥 Added size parameter (defaults to 24)
 ctx.save();
 ctx.translate(x, y);
 ctx.rotate(angle);
@@ -172,6 +173,18 @@ let py = size * Math.sin(a); // 🔥 Uses the dynamic size value for vertical st
 if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
 }
 ctx.closePath();
+ctx.fill(); ctx.stroke();
+ctx.restore();
+}
+
+// Vector Square Builder Module
+function drawRegen(x, y, angle, color) {
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(-50, -50, 20, 20);
 ctx.fill(); ctx.stroke();
 ctx.restore();
 }
