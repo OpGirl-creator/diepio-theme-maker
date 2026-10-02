@@ -117,10 +117,10 @@ function drawFallenBoosterElement(x, y, angle, bodyColor) {
     ctx.save(); ctx.rotate(136 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
     
     // Outer Back-Left Flank Barrel (-145 degrees)
-    ctx.save(); ctx.rotate(-145 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
+    ctx.save(); ctx.rotate(-146 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
     
     // Outer Back-Right Flank Barrel (145 degrees)
-    ctx.save(); ctx.rotate(145 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
+    ctx.save(); ctx.rotate(151 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
 
     // 2. Draw Main Front Barrel (Facing forward at 0 degrees)
     ctx.fillRect(0, -13, 44, 26);
