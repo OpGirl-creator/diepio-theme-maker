@@ -177,7 +177,7 @@ ctx.restore();
 
 // Vector Hexagonal Builder Module
 // Updated Hexagonal Builder Module with size parameter
-function drawHexagonElement(x, y, angle, color, size = 24) { // 🔥 Added size parameter (defaults to 24)
+function drawHexagonElement(x, y, angle, color, size = 30) { // 🔥 Added size parameter (defaults to 24)
 ctx.save();
 ctx.translate(x, y);
 ctx.rotate(angle);
