@@ -44,14 +44,16 @@ drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
-  drawMovementElement(5, 370, 150, 20, "#76fc87");
-  drawReloadElement(5, 345, 150, 20, "#76fc87");
-  drawBulletdamageElement(5, 335, 150, 20, "#76fc87");
-  drawPenetrationElement(5, 320, 150, 20, "#76fc87");
-  drawBulletspeedElement(5, 295, 150, 20, "#76fc87");
-  drawBodydamageElement(5, 270, 150, 20, "#76fc87");
-  drawMaxElement(5, 245, 150, 20, "#76fc87");
-  drawHealthElement(5, 235, 150, 20, "#76fc87");
+    // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap)
+    drawMovementElement(5, 375, 150, 20, "#76fc87"); // Y: 375
+    drawReloadElement(5, 350, 150, 20, "#76fc87");   // Y: 350 (-25)
+    drawBulletdamageElement(5, 325, 150, 20, "#76fc87");// Y: 325 (-25)
+    drawPenetrationElement(5, 300, 150, 20, "#76fc87"); // Y: 300 (-25)
+    drawBulletspeedElement(5, 275, 150, 20, "#76fc87"); // Y: 275 (-25)
+    drawBodydamageElement(5, 250, 150, 20, "#76fc87");  // Y: 250 (-25)
+    drawMaxElement(5, 225, 150, 20, "#76fc87");         // Y: 225 (-25)
+    drawHealthElement(5, 200, 150, 20, "#76fc87");      // Y: 200 (-25)
+
 
 // side boxs
 drawNameHUD("YOUR_NAME");
