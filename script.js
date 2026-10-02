@@ -47,7 +47,7 @@ function renderGamePreview() {
     switch (currentActiveMode) {
         case 'ffa':
             // Standard FFA Duel (Single Barrel vs Single Barrel)
-            drawTank(360, 200, -0.1, colorMain.value, 1);
+            drawTank(390, 200, -0.1, colorMain.value, 1);
             drawTank(620, 180, 3.0, colorEnemy.value, 2);
             break;
 
