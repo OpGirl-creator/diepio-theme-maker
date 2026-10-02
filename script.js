@@ -42,6 +42,7 @@ function renderGamePreview() {
 
     // 4. Draw a Fallen Boss polygon representation leveraging your color input
     drawFallenBossElement(425, 280, -0.2, colorFallen.value);
+    drawHexagonElement(425, 280, -0.2, colorFallen.value);
 
     // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup
     if (currentActiveMode === 'teams2') {
@@ -54,6 +55,26 @@ function renderGamePreview() {
         drawTank(620, 180, 3.0, colorEnemy.value, 1);
     }
 }
+
+// Vector Hexagonal Builder Module
+function drawHexagonElement(x, y, angle, color) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+        // Rotates 360 / 6 = 60 degrees each step (Math.PI / 3)
+        let a = (i * 2 * Math.PI / 6) - Math.PI / 2;
+        let px = 24 * Math.cos(a); // 24 is the layout radius scale
+        let py = 24 * Math.sin(a);
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+}
+
 
 // Vector Square Builder Module
 function drawSquareElement(x, y, angle, color) {
