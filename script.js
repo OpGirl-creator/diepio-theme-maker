@@ -54,6 +54,9 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
     drawMaxElement(5, 225, 150, 20, "#76fc87");         // Y: 225 (-25)
     drawHealthElement(5, 200, 150, 20, "#76fc87");      // Y: 200 (-25)
 
+    // Score bar/Level bar
+  drawMovementElement(350, 375, 150, 20, "#76fc87");
+
 
 // side boxs
 drawNameHUD("YOUR_NAME");
