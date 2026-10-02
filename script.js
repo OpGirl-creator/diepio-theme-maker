@@ -46,12 +46,12 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
 
   drawMovementElement(5, 370, 150, 20, "#76fc87");
   drawReloadElement(5, 345, 150, 20, "#76fc87");
-  drawBulletdamageElement(0, 370, 150, 20, "#76fc87");
-  drawPenetrationElement(0, 370, 150, 20, "#76fc87");
-  drawBulletspeedElement(0, 370, 150, 20, "#76fc87");
-  drawBodydamageElement(0, 370, 150, 20, "#76fc87");
-  drawMaxElement(0, 370, 150, 20, "#76fc87");
-  draHealthElement(0, 370, 150, 20, "#76fc87");
+  drawBulletdamageElement(5, 335, 150, 20, "#76fc87");
+  drawPenetrationElement(5, 320, 150, 20, "#76fc87");
+  drawBulletspeedElement(5, 295, 150, 20, "#76fc87");
+  drawBodydamageElement(5, 270, 150, 20, "#76fc87");
+  drawMaxElement(5, 245, 150, 20, "#76fc87");
+  drawHealthElement(5, 235, 150, 20, "#76fc87");
 
 // side boxs
 drawNameHUD("YOUR_NAME");
@@ -71,6 +71,114 @@ drawTank(220, 200, -0.1, colorMain.value, 2);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 }
+}
+
+function drawHealthElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+function drawMaxElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+function drawBodydamageElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+function drawBulletspeedElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+function drawPenetrationElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+function drawBulletdamagelement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
 }
 
 function drawReloadElement(x, y, width, height, color) {
