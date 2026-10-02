@@ -143,3 +143,47 @@ body {
     font-weight: normal;
     color: #e5e7eb;
 }
+
+/* =========================================================================
+   🎛️ NEW: CUSTOM THEME TOGGLE BUTTON STYLES
+   ========================================================================= */
+
+.theme-toggle-row {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 10px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.toggle-btn.disable {
+    background-color: #fc7676; /* Classic Diep.io Enemy Red Accent Tint */
+}
+
+.toggle-btn.disable:hover {
+    background-color: #e05c5c;
+}
+
+.toggle-btn.enable {
+    background-color: #2be6de; /* Classic Diep.io Active Cyan Tint */
+    color: #111111; /* Dark text matching high contrast UI design templates */
+}
+
+.toggle-btn.enable:hover {
+    background-color: #22c4bd;
+}
+
+.toggle-btn:active {
+    transform: scale(0.97);
+}
