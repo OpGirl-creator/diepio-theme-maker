@@ -101,25 +101,26 @@ ctx.restore();
 }
 
 // Vector Fallen Booster Builder Module
-function drawFallenBoosterElement(x, y, angle, bodyColor) {
+function drawFallenBoosterElement(x, y, angle, bodyColor, scale = 1.6) { // 🔥 Added scale parameter (Defaults to 1.6)
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(angle);
+    ctx.scale(scale, scale); // 🔥 This single line scales up all barrels and the body together!
     
     // Set color to the barrel picker input value
     ctx.fillStyle = colorBarrel.value;
 
     // 1. Draw the 4 Back/Flank Propulsion Barrels first (so they render behind the body)
-    // Extreme Back-Left Barrel (-165 degrees)
+    // Extreme Back-Left Barrel (-134 degrees)
     ctx.save(); ctx.rotate(-134 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
     
-    // Extreme Back-Right Barrel (165 degrees)
+    // Extreme Back-Right Barrel (136 degrees)
     ctx.save(); ctx.rotate(136 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
     
-    // Outer Back-Left Flank Barrel (-145 degrees)
+    // Outer Back-Left Flank Barrel (-146 degrees)
     ctx.save(); ctx.rotate(-146 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
     
-    // Outer Back-Right Flank Barrel (145 degrees)
+    // Outer Back-Right Flank Barrel (151 degrees)
     ctx.save(); ctx.rotate(151 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
 
     // 2. Draw Main Front Barrel (Facing forward at 0 degrees)
