@@ -38,11 +38,11 @@ ctx.lineWidth = 3.5;
 ctx.lineJoin = "round";
 
 // 3. Draw a crisp yellow polygon square in center arena area
-drawSquareElement(425, 130, 0.4, "#ffe869");
-drawFallenBossElement(425, 280, -0.2, colorFallen.value);
+drawSquareElement(425, 130, 0.4, colorSquare.value);
+drawPentagonElement(425, 280, -0.2, colorPentagon.value);
 drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
-  drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
+  
 
 // side boxs
 drawNameHUD("YOUR_NAME");
@@ -53,6 +53,7 @@ case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel)
 drawTank(390, 200, -0.1, colorMain.value, 1);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
+drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 break;
 
 case 'teams2':
@@ -238,7 +239,7 @@ renderGamePreview();
 });
 
 // Dynamic Inputs Change Render Hooks Pipeline
-const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen];
+const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen, colorSquare];
 allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
 
 // Execute initialization drawing array map loop on start
@@ -251,12 +252,14 @@ const main = colorMain.value.replace('#', '');
 const barrel = colorBarrel.value.replace('#', '');
 const enemy = colorEnemy.value.replace('#', '');
 const fallen = colorFallen.value.replace('#', '');
+const square = colorSquare.value.replace('#', '');
 
 return `// Diep.io Custom Console Theme Script\n` +
 `net_set_color(1, "${main}"); // Player Tank Body\n` +
 `net_set_color(0, "${barrel}"); // Tank Barrels\n` +
 `net_set_color(12, "${enemy}"); // Target Enemy Color\n` +
-`net_set_color(15, "${fallen}"); // Fallen Boss Color`;
+`net_set_color(15, "${fallen}"); // Fallen Boss Color\n` +
+  `net_set_color(15, "${square}"); // Fallen Boss Color\n`
 }
 
 
