@@ -7,6 +7,7 @@ const colorMain = document.getElementById('main');
 const colorBarrel = document.getElementById('barrel');
 const colorEnemy = document.getElementById('enemy');
 const colorFallen = document.getElementById('fallen');
+const colorSquare = document.getElementById('square');
 
 // Constants matching native Diep.io style designs
 const colorBackground = "#cdcdcd";
