@@ -120,24 +120,23 @@ function drawTriangleElement(x, y, angle, color) {
 
 
 // Vector Hexagonal Builder Module
-function drawHexagonElement(x, y, angle, color) {
+// Updated Hexagonal Builder Module with size parameter
+function drawHexagonElement(x, y, angle, color, size = 24) { // 🔥 Added size parameter (defaults to 24)
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(angle);
     ctx.fillStyle = color;
     ctx.beginPath();
     for (let i = 0; i < 6; i++) {
-        // Rotates 360 / 6 = 60 degrees each step (Math.PI / 3)
         let a = (i * 2 * Math.PI / 6) - Math.PI / 2;
-        let px = 24 * Math.cos(a); // 24 is the layout radius scale
-        let py = 24 * Math.sin(a);
+        let px = size * Math.cos(a); // 🔥 Uses the dynamic size value for horizontal stretch
+        let py = size * Math.sin(a); // 🔥 Uses the dynamic size value for vertical stretch
         if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
     }
     ctx.closePath();
     ctx.fill(); ctx.stroke();
     ctx.restore();
 }
-
 
 // Vector Square Builder Module
 function drawSquareElement(x, y, angle, color) {
