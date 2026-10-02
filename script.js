@@ -7,9 +7,6 @@ const colorMain = document.getElementById('main');
 const colorBarrel = document.getElementById('barrel');
 const colorEnemy = document.getElementById('enemy');
 const colorFallen = document.getElementById('fallen');
-const colorSquare = document.getElementById('square');
-
-const colorHUD = document.getElementById('hudColor');
 
 // Constants matching native Diep.io style designs
 const colorBackground = "#cdcdcd";
@@ -17,16 +14,6 @@ const colorGridLines = "#c4c4c4";
 const colorOutline = "#555555";
 
 let currentActiveMode = 'ffa';
-
-function hexToRGBA(hex, alpha = 0.4) {
-    // Remove leading hash if present
-    hex = hex.replace('#', '');
-    // Parse r, g, b values
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}
 
 // Main Canvas Render Pipeline
 function renderGamePreview() {
@@ -51,20 +38,19 @@ ctx.lineWidth = 3.5;
 ctx.lineJoin = "round";
 
 // 3. Draw a crisp yellow polygon square in center arena area
-drawSquareElement(425, 130, 0.4, colorSquare.value);
+drawSquareElement(425, 130, 0.4, "#ffe869");
+drawFallenBossElement(425, 280, -0.2, colorFallen.value);
 drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
+  drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
 // side boxs
 drawNameHUD("YOUR_NAME");
-drawPlainHUDText(15, 40, "WARNING: BOSS INBOUND");
 
 // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup
 switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel)
-    drawFallenBossElement(425, 280, -0.2, colorFallen.value);
-    drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 drawTank(390, 200, -0.1, colorMain.value, 1);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
@@ -78,61 +64,41 @@ break;
 }
 }
 
-// Dynamic Typography-Only Builder Module
-function drawPlainHUDText(x, y, nameText, fontColor = "#ffffff", fontSize = 14) {
-    ctx.save();
-    
-    // 1. Configure the Typography Text Styles
-    ctx.fillStyle = fontColor; // Sets custom text color (Defaults to white)
-    ctx.font = `bold ${fontSize}px Ubuntu, Arial, sans-serif`; // Diep.io utilizes 'Ubuntu' font
-    ctx.textAlign = "left";      // Aligns starting from your exact X coordinate
-    ctx.textBaseline = "top";    // Aligns starting from your exact Y coordinate
-
-    // 2. Draw the text layer directly to the canvas floor
-    ctx.fillText(nameText, x, y);
-
-    ctx.restore();
-}
-
 // UI HUD Name Box Builder Module
 function drawNameHUD(nameText) {
-    ctx.save();
+ctx.save();
 
-    // 1. Configure the Container Box Position & Dimensions
-    const boxX = 15;
-    const boxY = 15;
-    const boxWidth = 160;
-    const boxHeight = 35;
-    const cornerRadius = 4; 
+// 1. Configure the Container Box Position & Dimensions
+const boxX = 15;
+const boxY = 15;
+const boxWidth = 160;
+const boxHeight = 35;
+const cornerRadius = 4; // Slight roundness matching UI panels
 
-    // 2. Draw the Box Background (Converts picker hex to 40% transparent RGBA)
-    ctx.fillStyle = hexToRGBA(colorHUD.value, 0.4); 
-    ctx.beginPath();
-    ctx.roundRect(boxX, boxY, boxWidth, boxHeight, cornerRadius);
-    ctx.fill();
+// 2. Draw the Box Background (Semi-transparent dark grey)
+ctx.fillStyle = "rgba(85, 85, 85, 0.4)"; // 40% opaque dark outline color
+ctx.beginPath();
+ctx.roundRect(boxX, boxY, boxWidth, boxHeight, cornerRadius);
+ctx.fill();
 
-    // 3. Draw the Outer Border Outlines
-    ctx.strokeStyle = colorOutline; 
-    ctx.lineWidth = 2.5;
-    ctx.stroke();
+// 3. Draw the Outer Border Outlines
+ctx.strokeStyle = colorOutline; // Reuses your #555555 constant
+ctx.lineWidth = 2.5;
+ctx.stroke();
 
-    // 4. Draw the Typography Text Layer
-    ctx.fillStyle = "#ffffff"; 
-    ctx.font = "bold 14px Ubuntu, Arial, sans-serif"; 
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
+// 4. Draw the Typography Text Layer
+ctx.fillStyle = "#ffffff"; // Pure white text
+ctx.font = "bold 14px Ubuntu, Arial, sans-serif"; // Diep.io utilizes 'Ubuntu' font
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
 
-    const textX = boxX + (boxWidth / 2);
-    const textY = boxY + (boxHeight / 2);
-    ctx.fillText(nameText, textX, textY);
+// Position text exactly in the center of our bounding box layout
+const textX = boxX + (boxWidth / 2);
+const textY = boxY + (boxHeight / 2);
+ctx.fillText(nameText, textX, textY);
 
-    ctx.restore();
+ctx.restore();
 }
-
-// 📑 UPDATE YOUR EVENT LISTENERS ARRAY RIGHT BEFORE RENDER STEP
-// Simply add colorHUD to your existing array list:
-const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen, colorHUD];
-allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
 
 // Vector Fallen Booster Builder Module
 function drawFallenBoosterElement(x, y, angle, bodyColor, scale = 1.6) { // 🔥 Added scale parameter (Defaults to 1.6)
@@ -193,7 +159,7 @@ ctx.restore();
 
 // Vector Hexagonal Builder Module
 // Updated Hexagonal Builder Module with size parameter
-function drawHexagonElement(x, y, angle, color, size = 30) { // 🔥 Added size parameter (defaults to 24)
+function drawHexagonElement(x, y, angle, color, size = 24) { // 🔥 Added size parameter (defaults to 24)
 ctx.save();
 ctx.translate(x, y);
 ctx.rotate(angle);
@@ -272,7 +238,7 @@ renderGamePreview();
 });
 
 // Dynamic Inputs Change Render Hooks Pipeline
-const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen, colorSquare, colorHUD];
+const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen];
 allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
 
 // Execute initialization drawing array map loop on start
@@ -285,15 +251,12 @@ const main = colorMain.value.replace('#', '');
 const barrel = colorBarrel.value.replace('#', '');
 const enemy = colorEnemy.value.replace('#', '');
 const fallen = colorFallen.value.replace('#', '');
-const square = colorSquare.value.replace('#', '');
-
 
 return `// Diep.io Custom Console Theme Script\n` +
 `net_set_color(1, "${main}"); // Player Tank Body\n` +
 `net_set_color(0, "${barrel}"); // Tank Barrels\n` +
 `net_set_color(12, "${enemy}"); // Target Enemy Color\n` +
-`net_set_color(15, "${fallen}"); // Fallen Boss Color\n` +
-`net_set_color(13, "${square}"); // Square`;
+`net_set_color(15, "${fallen}"); // Fallen Boss Color`;
 }
 
 
