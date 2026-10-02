@@ -125,12 +125,19 @@ renderGamePreview();
 
 // Theme Script Generation Logic Module
 function generateThemeScript() {
+    // Removes the '#' from the beginning of each hex color code
+    const main = colorMain.value.replace('#', '');
+    const barrel = colorBarrel.value.replace('#', '');
+    const enemy = colorEnemy.value.replace('#', '');
+    const fallen = colorFallen.value.replace('#', '');
+
     return `// Diep.io Custom Console Theme Script\n` +
-           `net_set_color(1, "${colorMain.value}"); // Player Tank Body\n` +
-           `net_set_color(0, "${colorBarrel.value}"); // Tank Barrels\n` +
-           `net_set_color(12, "${colorEnemy.value}"); // Target Enemy Color\n` +
-           `net_set_color(15, "${colorFallen.value}"); // Fallen Boss Color`;
+           `net_set_color(1, "${main}"); // Player Tank Body\n` +
+           `net_set_color(0, "${barrel}"); // Tank Barrels\n` +
+           `net_set_color(12, "${enemy}"); // Target Enemy Color\n` +
+           `net_set_color(15, "${fallen}"); // Fallen Boss Color`;
 }
+
 
 document.getElementById('viewCodeBtn').addEventListener('click', () => {
     document.getElementById('codeOutput').value = generateThemeScript();
