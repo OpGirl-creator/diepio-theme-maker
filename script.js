@@ -44,7 +44,7 @@ drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
-  drawRegen(200, 100, 2.8, colorFallen.value);
+  drawRegenElement(100, 250, 120, 60, "#76fc87");
 
 // side boxs
 drawNameHUD("YOUR_NAME");
@@ -65,6 +65,26 @@ drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 }
 }
+
+// Vector Rectangle Builder Module
+function drawRegenElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
 
 // UI HUD Name Box Builder Module
 function drawNameHUD(nameText) {
