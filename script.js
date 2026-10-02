@@ -111,10 +111,10 @@ function drawFallenBoosterElement(x, y, angle, bodyColor) {
 
     // 1. Draw the 4 Back/Flank Propulsion Barrels first (so they render behind the body)
     // Extreme Back-Left Barrel (-165 degrees)
-    ctx.save(); ctx.rotate(-165 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
+    ctx.save(); ctx.rotate(-134 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
     
     // Extreme Back-Right Barrel (165 degrees)
-    ctx.save(); ctx.rotate(165 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
+    ctx.save(); ctx.rotate(136 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
     
     // Outer Back-Left Flank Barrel (-145 degrees)
     ctx.save(); ctx.rotate(-145 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
