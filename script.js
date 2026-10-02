@@ -39,7 +39,7 @@ ctx.lineWidth = 3.5;
 ctx.lineJoin = "round";
 
 // 3. Draw a crisp yellow polygon square in center arena area
-drawSquareElement(425, 130, 0.4, "#ffe869");
+drawSquareElement(425, 130, 0.4, colorSquare.value);
 drawFallenBossElement(425, 280, -0.2, colorFallen.value);
 drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
