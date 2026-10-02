@@ -106,50 +106,30 @@ function drawFallenBoosterElement(x, y, angle, bodyColor) {
     ctx.translate(x, y);
     ctx.rotate(angle);
     
-    // Core stroke style configs mapping your canvas global defaults
-    ctx.strokeStyle = colorOutline;
-    ctx.lineWidth = 3.5;
-    ctx.lineJoin = "round";
+    // Set color to the barrel picker input value
     ctx.fillStyle = colorBarrel.value;
 
-    // 1. LAYER 1: Deep Back Thrusters (Rendered underneath everything else)
-    // Deep Back-Left Thruster (Rotated roughly -150 degrees)
-    ctx.save();
-    ctx.rotate(-150 * Math.PI / 180);
-    ctx.fillRect(0, -11, 40, 22);
-    ctx.strokeRect(0, -11, 40, 22);
-    ctx.restore();
+    // 1. Draw the 4 Back/Flank Propulsion Barrels first (so they render behind the body)
+    // Extreme Back-Left Barrel (-165 degrees)
+    ctx.save(); ctx.rotate(-165 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
     
-    // Deep Back-Right Thruster (Rotated roughly 120 degrees)
-    ctx.save();
-    ctx.rotate(120 * Math.PI / 180);
-    ctx.fillRect(0, -11, 38, 22);
-    ctx.strokeRect(0, -11, 38, 22);
-    ctx.restore();
-
-    // 2. LAYER 2: Wide Side-Back Thrusters (Overlaps the deep back thrusters)
-    // Wide Left Thruster (Rotated roughly -115 degrees)
-    ctx.save();
-    ctx.rotate(-115 * Math.PI / 180);
-    ctx.fillRect(0, -13, 36, 26);
-    ctx.strokeRect(0, -13, 36, 26);
-    ctx.restore();
+    // Extreme Back-Right Barrel (165 degrees)
+    ctx.save(); ctx.rotate(165 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
     
-    // Wide Right Thruster (Rotated roughly 90 degrees)
-    ctx.save();
-    ctx.rotate(90 * Math.PI / 180);
-    ctx.fillRect(0, -14, 38, 28);
-    ctx.strokeRect(0, -14, 38, 28);
-    ctx.restore();
+    // Outer Back-Left Flank Barrel (-145 degrees)
+    ctx.save(); ctx.rotate(-145 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
+    
+    // Outer Back-Right Flank Barrel (145 degrees)
+    ctx.save(); ctx.rotate(145 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
 
-    // 3. LAYER 3: Massive Main Front Barrel (Extends far forward at 0 degrees)
-    ctx.fillRect(0, -17, 58, 34); // Scaled wider and longer to fit the asset image
-    ctx.strokeRect(0, -17, 58, 34);
+    // 2. Draw Main Front Barrel (Facing forward at 0 degrees)
+    ctx.fillRect(0, -13, 44, 26);
+    ctx.strokeRect(0, -13, 44, 26);
 
-    // 4. LAYER 4: Giant Central Tank Body Circle (Sits perfectly on top of all barrels)
+    // 3. Draw the Central Tank Body Circle
     ctx.fillStyle = bodyColor;
     ctx.beginPath();
-    ctx.arc(0, 0, 32, 0, 2 * Math.PI); // Radius expanded to 32 to cover barrel origins
+    ctx.arc(0, 0, 24, 0, 2 * Math.PI);
     ctx.fill(); 
     ctx.stroke();
     
