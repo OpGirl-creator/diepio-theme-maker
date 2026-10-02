@@ -163,7 +163,7 @@ function drawPenetrationElement(x, y, width, height, color) {
     ctx.restore();
 }
 
-function drawBulletdamagelement(x, y, width, height, color) {
+function drawBulletdamageElement(x, y, width, height, color) {
     ctx.save();
     
     // 1. Draw the inner background color fill
