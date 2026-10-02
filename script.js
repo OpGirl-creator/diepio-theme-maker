@@ -45,7 +45,7 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
   drawMovementElement(5, 370, 150, 20, "#76fc87");
-  drawReloadElement(5, 370, 190, 20, "#76fc87");
+  drawReloadElement(5, 350, 150, 20, "#76fc87");
   drawBulletdamageElement(0, 370, 150, 20, "#76fc87");
   drawPenetrationElement(0, 370, 150, 20, "#76fc87");
   drawBulletspeedElement(0, 370, 150, 20, "#76fc87");
