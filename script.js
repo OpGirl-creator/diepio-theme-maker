@@ -40,18 +40,23 @@ function renderGamePreview() {
     // 3. Draw a crisp yellow polygon square in center arena area
     drawSquareElement(425, 130, 0.4, "#ffe869");
     drawFallenBossElement(425, 280, -0.2, colorFallen.value);
-    drawHexagonElement(600, 180, 0.4, colorFallen.value);
+    drawHexagonElement(200, 180, 0.2, colorFallen.value);
     drawTriangleElement(600, 280, -0.4, colorFallen.value);
 
     // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup
-    if (currentActiveMode === 'teams2') {
-        // Player Tank vs Twin Cannon Team Enemy Tank
-        drawTank(220, 200, -0.1, colorMain.value, 1);
-        drawTank(620, 180, 3.0, colorEnemy.value, 2);
-    } else {
-        // Player Tank vs standard FFA Single Cannon Enemy
-        drawTank(220, 200, -0.1, colorMain.value, 1);
-        drawTank(620, 180, 3.0, colorEnemy.value, 1);
+    switch (currentActiveMode) {
+        case 'ffa':
+            // Standard FFA Duel (Single Barrel vs Single Barrel)
+            drawTank(220, 200, -0.1, colorMain.value, 1);
+            drawTank(620, 180, 3.0, colorEnemy.value, 1);
+            break;
+
+        case 'teams2':
+            // Team Mode (Flank Guard player vs Twin Cannon enemy)
+            // Let's modify the player to have 2 barrels for flavor!
+            drawTank(220, 200, -0.1, colorMain.value, 2); 
+            drawTank(620, 180, 3.0, colorEnemy.value, 2);
+            break;
     }
 }
 
