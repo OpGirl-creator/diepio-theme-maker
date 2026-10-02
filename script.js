@@ -233,3 +233,65 @@ document.getElementById('copyCodeBtn').addEventListener('click', () => {
     navigator.clipboard.writeText(output.value);
     alert('Theme script copied to clipboard!');
 });
+
+
+// =========================================================================
+// 🎛️ NEW: ENABLE / DISABLE CUSTOM COLORS CONTROLLER MODULE
+// =========================================================================
+
+// Native Standard Diep.io Game Colors
+const diepDefaults = {
+    main: "#00b2e1",
+    barrel: "#999999",
+    enemy: "#f14e54",
+    fallen: "#bf7ff5"
+};
+
+let savedCustomColors = null;
+let isThemeColorsDisabled = false;
+
+function disableCustomThemeColors() {
+    if (isThemeColorsDisabled) return; 
+
+    // 1. Keep a record of the user's custom picks so we can restore them later
+    savedCustomColors = {
+        main: colorMain.value,
+        barrel: colorBarrel.value,
+        enemy: colorEnemy.value,
+        fallen: colorFallen.value
+    };
+
+    // 2. Set input values to native game defaults
+    colorMain.value = diepDefaults.main;
+    colorBarrel.value = diepDefaults.barrel;
+    colorEnemy.value = diepDefaults.enemy;
+    colorFallen.value = diepDefaults.fallen;
+
+    isThemeColorsDisabled = true;
+
+    // 3. Force canvas redraw with original theme profiles
+    renderGamePreview();
+}
+
+function enableCustomThemeColors() {
+    if (!isThemeColorsDisabled || !savedCustomColors) return; 
+
+    // Restore the exact hex values the user previously selected
+    colorMain.value = savedCustomColors.main;
+    colorBarrel.value = savedCustomColors.barrel;
+    colorEnemy.value = savedCustomColors.enemy;
+    colorFallen.value = savedCustomColors.fallen;
+
+    isThemeColorsDisabled = false;
+
+    // Force canvas redraw with custom color values returned
+    renderGamePreview();
+}
+
+// Bind button clicks to structural HTML buttons
+document.getElementById('disableColorsBtn').addEventListener('click', disableCustomThemeColors);
+document.getElementById('enableColorsBtn').addEventListener('click', enableCustomThemeColors);
+
+// Intercept theme script generation to output raw code text placeholder message when disabled
+const originalGenerateThemeScript = generateThemeScript;
+generateThemeScript = function() {
