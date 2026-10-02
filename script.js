@@ -48,9 +48,6 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
     // 1. Classic semi-transparent box (leaving color blank uses the default)
     drawNameHUD(15, 15, 160, 35, "PLAYER_HUD");
 
-    // 2. A green box using a simple web color string
-    drawNameHUD(15, 60, 180, 30, "GREEN_TEAM", "green");
-
     // 3. A crimson box matching the exact color value from your Enemy Color input wheel
     drawNameHUD(15, 100, 200, 35, "TARGET_ENEMY", colorEnemy.value);
 
