@@ -44,7 +44,7 @@ drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
-  drawRegenElement(50, 100, 150, 20, "#76fc87");
+  drawMovementElement(-50, 100, 150, 20, "#76fc87");
 
 // side boxs
 drawNameHUD("YOUR_NAME");
@@ -67,7 +67,7 @@ break;
 }
 
 // Vector Rectangle Builder Module
-function drawRegenElement(x, y, width, height, color) {
+function drawMovementElement(x, y, width, height, color) {
     ctx.save();
     
     // 1. Draw the inner background color fill
