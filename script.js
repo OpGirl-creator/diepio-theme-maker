@@ -42,6 +42,7 @@ drawSquareElement(425, 130, 0.4, "#ffe869");
 drawFallenBossElement(425, 280, -0.2, colorFallen.value);
 drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
+  drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
 // side boxs
 drawNameHUD("YOUR_NAME");
@@ -97,6 +98,42 @@ const textY = boxY + (boxHeight / 2);
 ctx.fillText(nameText, textX, textY);
 
 ctx.restore();
+}
+
+// Vector Fallen Booster Builder Module
+function drawFallenBoosterElement(x, y, angle, bodyColor) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    
+    // Set color to the barrel picker input value
+    ctx.fillStyle = colorBarrel.value;
+
+    // 1. Draw the 4 Back/Flank Propulsion Barrels first (so they render behind the body)
+    // Extreme Back-Left Barrel (-165 degrees)
+    ctx.save(); ctx.rotate(-165 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
+    
+    // Extreme Back-Right Barrel (165 degrees)
+    ctx.save(); ctx.rotate(165 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
+    
+    // Outer Back-Left Flank Barrel (-145 degrees)
+    ctx.save(); ctx.rotate(-145 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
+    
+    // Outer Back-Right Flank Barrel (145 degrees)
+    ctx.save(); ctx.rotate(145 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
+
+    // 2. Draw Main Front Barrel (Facing forward at 0 degrees)
+    ctx.fillRect(0, -13, 44, 26);
+    ctx.strokeRect(0, -13, 44, 26);
+
+    // 3. Draw the Central Tank Body Circle
+    ctx.fillStyle = bodyColor;
+    ctx.beginPath();
+    ctx.arc(0, 0, 24, 0, 2 * Math.PI);
+    ctx.fill(); 
+    ctx.stroke();
+    
+    ctx.restore();
 }
 
 // Vector Triangle Builder Module
