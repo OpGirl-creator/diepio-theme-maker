@@ -47,6 +47,7 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
 
 // side boxs
 drawNameHUD("YOUR_NAME");
+drawPlainHUDText(15, 40, "WARNING: BOSS INBOUND");
 
 // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup
 switch (currentActiveMode) {
@@ -63,6 +64,22 @@ drawTank(220, 200, -0.1, colorMain.value, 2);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 }
+}
+
+// Dynamic Typography-Only Builder Module
+function drawPlainHUDText(x, y, nameText, fontColor = "#ffffff", fontSize = 14) {
+    ctx.save();
+    
+    // 1. Configure the Typography Text Styles
+    ctx.fillStyle = fontColor; // Sets custom text color (Defaults to white)
+    ctx.font = `bold ${fontSize}px Ubuntu, Arial, sans-serif`; // Diep.io utilizes 'Ubuntu' font
+    ctx.textAlign = "left";      // Aligns starting from your exact X coordinate
+    ctx.textBaseline = "top";    // Aligns starting from your exact Y coordinate
+
+    // 2. Draw the text layer directly to the canvas floor
+    ctx.fillText(nameText, x, y);
+
+    ctx.restore();
 }
 
 // UI HUD Name Box Builder Module
