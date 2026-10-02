@@ -40,10 +40,8 @@ ctx.lineJoin = "round";
 
 // 3. Draw a crisp yellow polygon square in center arena area
 drawSquareElement(425, 130, 0.4, colorSquare.value);
-drawFallenBossElement(425, 280, -0.2, colorFallen.value);
 drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
-  drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
 // side boxs
 drawNameHUD("YOUR_NAME");
@@ -53,6 +51,8 @@ drawPlainHUDText(15, 40, "WARNING: BOSS INBOUND");
 switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel)
+    drawFallenBossElement(425, 280, -0.2, colorFallen.value);
+    drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 drawTank(390, 200, -0.1, colorMain.value, 1);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
