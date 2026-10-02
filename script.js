@@ -42,7 +42,7 @@ function renderGamePreview() {
 
     // 4. Draw a Fallen Boss polygon representation leveraging your color input
     drawFallenBossElement(425, 280, -0.2, colorFallen.value);
-    drawHexagonElement(425, 280, -0.2, colorFallen.value);
+    drawHexagonElement(300, 180, -0.4, colorFallen.value);
 
     // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup
     if (currentActiveMode === 'teams2') {
