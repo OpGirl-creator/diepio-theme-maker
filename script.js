@@ -239,7 +239,7 @@ renderGamePreview();
 });
 
 // Dynamic Inputs Change Render Hooks Pipeline
-const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen];
+const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen, colorSquare];
 allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
 
 // Execute initialization drawing array map loop on start
@@ -252,12 +252,14 @@ const main = colorMain.value.replace('#', '');
 const barrel = colorBarrel.value.replace('#', '');
 const enemy = colorEnemy.value.replace('#', '');
 const fallen = colorFallen.value.replace('#', '');
+const square = colorSquare.value.replace('#', '');
 
 return `// Diep.io Custom Console Theme Script\n` +
 `net_set_color(1, "${main}"); // Player Tank Body\n` +
 `net_set_color(0, "${barrel}"); // Tank Barrels\n` +
 `net_set_color(12, "${enemy}"); // Target Enemy Color\n` +
-`net_set_color(15, "${fallen}"); // Fallen Boss Color`;
+`net_set_color(15, "${fallen}"); // Fallen Boss Color\n` +
+`net_set_color(13, "${square}"); // Square`;
 }
 
 
