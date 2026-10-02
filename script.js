@@ -43,6 +43,9 @@ function renderGamePreview() {
     drawHexagonElement(200, 180, 0.2, colorFallen.value);
     drawTriangleElement(600, 280, -0.4, colorFallen.value);
 
+    // side boxs
+    drawNameHUD("YOUR_NAME");
+
     // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup
     switch (currentActiveMode) {
         case 'ffa':
