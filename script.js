@@ -44,7 +44,7 @@ drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
-  drawMovementElement(-20, 600, 150, 20, "#76fc87");
+  drawMovementElement(-20, 400, 150, 20, "#76fc87");
 
 // side boxs
 drawNameHUD("YOUR_NAME");
