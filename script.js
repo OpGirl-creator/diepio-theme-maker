@@ -9,12 +9,24 @@ const colorEnemy = document.getElementById('enemy');
 const colorFallen = document.getElementById('fallen');
 const colorSquare = document.getElementById('square');
 
+const colorHUD = document.getElementById('hudColor');
+
 // Constants matching native Diep.io style designs
 const colorBackground = "#cdcdcd";
 const colorGridLines = "#c4c4c4";
 const colorOutline = "#555555";
 
 let currentActiveMode = 'ffa';
+
+function hexToRGBA(hex, alpha = 0.4) {
+    // Remove leading hash if present
+    hex = hex.replace('#', '');
+    // Parse r, g, b values
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
 
 // Main Canvas Render Pipeline
 function renderGamePreview() {
@@ -84,39 +96,43 @@ function drawPlainHUDText(x, y, nameText, fontColor = "#ffffff", fontSize = 14) 
 
 // UI HUD Name Box Builder Module
 function drawNameHUD(nameText) {
-ctx.save();
+    ctx.save();
 
-// 1. Configure the Container Box Position & Dimensions
-const boxX = 15;
-const boxY = 15;
-const boxWidth = 160;
-const boxHeight = 35;
-const cornerRadius = 4; // Slight roundness matching UI panels
+    // 1. Configure the Container Box Position & Dimensions
+    const boxX = 15;
+    const boxY = 15;
+    const boxWidth = 160;
+    const boxHeight = 35;
+    const cornerRadius = 4; 
 
-// 2. Draw the Box Background (Semi-transparent dark grey)
-ctx.fillStyle = "rgba(85, 85, 85, 0.4)"; // 40% opaque dark outline color
-ctx.beginPath();
-ctx.roundRect(boxX, boxY, boxWidth, boxHeight, cornerRadius);
-ctx.fill();
+    // 2. Draw the Box Background (Converts picker hex to 40% transparent RGBA)
+    ctx.fillStyle = hexToRGBA(colorHUD.value, 0.4); 
+    ctx.beginPath();
+    ctx.roundRect(boxX, boxY, boxWidth, boxHeight, cornerRadius);
+    ctx.fill();
 
-// 3. Draw the Outer Border Outlines
-ctx.strokeStyle = colorOutline; // Reuses your #555555 constant
-ctx.lineWidth = 2.5;
-ctx.stroke();
+    // 3. Draw the Outer Border Outlines
+    ctx.strokeStyle = colorOutline; 
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
 
-// 4. Draw the Typography Text Layer
-ctx.fillStyle = "#ffffff"; // Pure white text
-ctx.font = "bold 14px Ubuntu, Arial, sans-serif"; // Diep.io utilizes 'Ubuntu' font
-ctx.textAlign = "center";
-ctx.textBaseline = "middle";
+    // 4. Draw the Typography Text Layer
+    ctx.fillStyle = "#ffffff"; 
+    ctx.font = "bold 14px Ubuntu, Arial, sans-serif"; 
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
 
-// Position text exactly in the center of our bounding box layout
-const textX = boxX + (boxWidth / 2);
-const textY = boxY + (boxHeight / 2);
-ctx.fillText(nameText, textX, textY);
+    const textX = boxX + (boxWidth / 2);
+    const textY = boxY + (boxHeight / 2);
+    ctx.fillText(nameText, textX, textY);
 
-ctx.restore();
+    ctx.restore();
 }
+
+// 📑 UPDATE YOUR EVENT LISTENERS ARRAY RIGHT BEFORE RENDER STEP
+// Simply add colorHUD to your existing array list:
+const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen, colorHUD];
+allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
 
 // Vector Fallen Booster Builder Module
 function drawFallenBoosterElement(x, y, angle, bodyColor, scale = 1.6) { // 🔥 Added scale parameter (Defaults to 1.6)
@@ -256,7 +272,7 @@ renderGamePreview();
 });
 
 // Dynamic Inputs Change Render Hooks Pipeline
-const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen, colorSquare];
+const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen, colorSquare, colorHUD];
 allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
 
 // Execute initialization drawing array map loop on start
@@ -270,6 +286,7 @@ const barrel = colorBarrel.value.replace('#', '');
 const enemy = colorEnemy.value.replace('#', '');
 const fallen = colorFallen.value.replace('#', '');
 const square = colorSquare.value.replace('#', '');
+
 
 return `// Diep.io Custom Console Theme Script\n` +
 `net_set_color(1, "${main}"); // Player Tank Body\n` +
