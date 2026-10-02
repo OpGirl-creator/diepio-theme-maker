@@ -44,7 +44,14 @@ drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
-  drawMovementElement(0, 370, 150, 20, "#76fc87");
+  drawMovementElement(5, 370, 150, 20, "#76fc87");
+  drawReloadElement(5, 370, 190, 20, "#76fc87");
+  drawBulletdamageElement(0, 370, 150, 20, "#76fc87");
+  drawPenetrationElement(0, 370, 150, 20, "#76fc87");
+  drawBulletspeedElement(0, 370, 150, 20, "#76fc87");
+  drawBodydamageElement(0, 370, 150, 20, "#76fc87");
+  drawMaxElement(0, 370, 150, 20, "#76fc87");
+  draHealthElement(0, 370, 150, 20, "#76fc87");
 
 // side boxs
 drawNameHUD("YOUR_NAME");
@@ -64,6 +71,24 @@ drawTank(220, 200, -0.1, colorMain.value, 2);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 }
+}
+
+function drawReloadElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
 }
 
 // Vector Rectangle Builder Module
