@@ -66,7 +66,7 @@ drawNameHUD("YOUR_NAME");
 switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel)
-drawTank(500, 200, -0.1, colorMain.value, 1);
+drawTank(450, 200, -0.1, colorMain.value, 1);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 
