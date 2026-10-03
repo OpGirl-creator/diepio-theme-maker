@@ -37,18 +37,32 @@ ctx.strokeStyle = colorOutline;
 ctx.lineWidth = 3.5;
 ctx.lineJoin = "round";
 
+// texts ---------------------------------------------------
+ctx.save();
+ctx.fillStyle = "#ffffff"; // Pure white text
+ctx.font = "bold 18px Ubuntu, Arial, sans-serif";
+ctx.textAlign = "center";  // Centers text cleanly over the 150px bars
+ctx.textBaseline = "bottom";
 
-   ctx.save();
-    ctx.fillStyle = "#ffffff"; // Pure white text
-    ctx.font = "bold 18px Ubuntu, Arial, sans-serif";
-    ctx.textAlign = "center";  // Centers text cleanly over the 150px bars
-    ctx.textBaseline = "bottom";
-    
-    // Position the text horizontally centered above the upcoming boxes (695 + 75)
-    ctx.fillText("Scoreboard", 770, 38); 
-    ctx.fillText("OP GIRL", 425, 345); 
-    ctx.fillText("Upgrades", 50, 25);
-    ctx.restore();
+// 🔥 NEW: Configure the thick dark outline style layers
+ctx.strokeStyle = "#555555"; // Reuses your classic dark grey outline color
+ctx.lineWidth = 3.5;       // Matches the thickness of the tank outlines
+ctx.lineJoin = "round";    // Prevents sharp spike glitches on letter corners
+
+// Position the text horizontally centered above the upcoming boxes (695 + 75)
+// 1. Scoreboard Text (Outline first, then Fill)
+ctx.strokeText("Scoreboard", 770, 38);
+ctx.fillText("Scoreboard", 770, 38);
+
+// 2. OP GIRL Text (Outline first, then Fill)
+ctx.strokeText("OP GIRL", 425, 345);
+ctx.fillText("OP GIRL", 425, 345);
+
+// 3. Upgrades Text (Outline first, then Fill)
+ctx.strokeText("Upgrades", 50, 25);
+ctx.fillText("Upgrades", 50, 25);
+
+ctx.restore();
    
 //bottom right map ----------------------
    drawMovementElement(720, 270, 120, 120, "#76fc87");
