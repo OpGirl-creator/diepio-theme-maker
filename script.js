@@ -59,13 +59,14 @@ ctx.strokeText("OP GIRL", 425, 345);
 ctx.fillText("OP GIRL", 425, 345);
 
 // 3. Upgrades Text (Outline first, then Fill)
-ctx.strokeText("Upgrades", 50, 25);
-ctx.fillText("Upgrades", 50, 25);
+ctx.strokeText("Upgrades", 40, 25);
+ctx.fillText("Upgrades", 40, 25);
 
 ctx.restore();
    
 //bottom right map ----------------------
    drawMovementElement(720, 270, 120, 120, "#76fc87");
+drawTriangleElement(600, 280, -0.4, colorFallen.value,   35);  // Makes a larger triangle
 //upgrades ----------------------------------------------
     drawHealthElement(5, 30, 65, 65, "#76fc87");       // Grid Slot 1 (Left Box)
     drawMaxElement(75, 30, 65, 65, "#76fc87");        // Grid Slot 2 (Right Box)
@@ -76,7 +77,7 @@ ctx.restore();
 drawSquareElement(425, 130, 0.4, "#ffe869");
 drawFallenBossElement(425, 280, -0.2, colorFallen.value);
 drawHexagonElement(200, 180, 0.2, colorFallen.value);
-drawTriangleElement(600, 280, -0.4, colorFallen.value);
+drawTriangleElement(600, 280, -0.4, colorFallen.value,   35);  // Makes a larger triangle
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
     // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
@@ -341,22 +342,23 @@ function drawFallenBoosterElement(x, y, angle, bodyColor, scale = 1.6) { // 🔥
 }
 
 // Vector Triangle Builder Module
-function drawTriangleElement(x, y, angle, color) {
-ctx.save();
-ctx.translate(x, y);
-ctx.rotate(angle);
-ctx.fillStyle = color;
-ctx.beginPath();
-for (let i = 0; i < 3; i++) {
-// Rotates 360 / 3 = 120 degrees each step
-let a = (i * 2 * Math.PI / 3) - Math.PI / 2;
-let px = 20 * Math.cos(a); // 20 is the radius size
-let py = 20 * Math.sin(a);
-if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-}
-ctx.closePath();
-ctx.fill(); ctx.stroke();
-ctx.restore();
+// Updated Vector Triangle Builder Module with size parameter
+function drawTriangleElement(x, y, angle, color, size = 20) { // 🔥 Added size parameter (defaults to 20)
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    for (let i = 0; i < 3; i++) {
+        // Rotates 360 / 3 = 120 degrees each step
+        let a = (i * 2 * Math.PI / 3) - Math.PI / 2;
+        let px = size * Math.cos(a); // 🔥 Uses the dynamic size value instead of 20
+        let py = size * Math.sin(a); // 🔥 Uses the dynamic size value instead of 20
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
 }
 
 
