@@ -45,7 +45,7 @@ ctx.lineJoin = "round";
     ctx.textBaseline = "bottom";
     
     // Position the text horizontally centered above the upcoming boxes (695 + 75)
-    ctx.fillText("Scoreboard", 770, 40); 
+    ctx.fillText("Scoreboard", 770, 38); 
     ctx.restore();
 // 3. Draw a crisp yellow polygon square in center arena area ----------------------------------------------------
 drawSquareElement(425, 130, 0.4, "#ffe869");
