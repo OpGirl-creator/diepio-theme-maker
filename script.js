@@ -55,7 +55,8 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
     drawHealthElement(5, 200, 150, 20, "#76fc87");      // Y: 200 (-25)
 
     // Score bar/Level bar
-  drawMovementElement(350, 375, 150, 20, "#76fc87");
+  drawScoreElement(350, 350, 150, 20, "#76fc87");
+  drawLevelElement(350, 375, 200, 20, "#76fc87");
 
 
 // side boxs
@@ -76,6 +77,43 @@ drawTank(220, 200, -0.1, colorMain.value, 2);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 }
+}
+
+function drawScoreElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+
+function drawLevelElement(x, y, width, height, color) {
+    ctx.save();
+    
+    // 1. Draw the inner background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
 }
 
 function drawHealthElement(x, y, width, height, color) {
