@@ -46,6 +46,7 @@ ctx.lineJoin = "round";
     
     // Position the text horizontally centered above the upcoming boxes (695 + 75)
     ctx.fillText("Scoreboard", 770, 38); 
+    ctx.fillText("OP GIRL", 350, 250); 
     ctx.restore();
 // 3. Draw a crisp yellow polygon square in center arena area ----------------------------------------------------
 drawSquareElement(425, 130, 0.4, "#ffe869");
@@ -71,10 +72,6 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
     drawBodydamageElement(695, 95, 150, 20, "#76fc87");  // Row 3 (+25px)
     drawBulletspeedElement(695, 120, 150, 20, "#76fc87"); // Row 4 (+25px)
     drawPenetrationElement(695, 145, 150, 20, "#76fc87"); // Row 5 (+25px)
-    drawBulletdamageElement(695, 170, 150, 20, "#76fc87");// Row 6 (+25px)
-    drawReloadElement(695, 195, 150, 20, "#76fc87");     // Row 7 (+25px)
-    drawMovementElement(695, 220, 150, 20, "#76fc87");   // Row 8 (Bottom)
-
   
     // Score bar/Level bar ----------------------------------------------------
   drawScoreElement(350, 350, 150, 20, "#76fc87");
