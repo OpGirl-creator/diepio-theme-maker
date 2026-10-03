@@ -47,16 +47,16 @@ ctx.lineJoin = "round";
     // Position the text horizontally centered above the upcoming boxes (695 + 75)
     ctx.fillText("Scoreboard", 770, 38); 
     ctx.fillText("OP GIRL", 425, 345); 
-    ctx.fillText("Upgrades", 30, 25);
+    ctx.fillText("Upgrades", 50, 25);
     ctx.restore();
    
 //bottom right map ----------------------
    drawMovementElement(720, 270, 120, 120, "#76fc87");
 //upgrades ----------------------------------------------
-    drawHealthElement(30, 30, 60, 60, "#76fc87");      // Grid Slot 1 (Top-Left)
-    drawMaxElement(100, 30, 60, 60, "#76fc87");       // Grid Slot 2 (Top-Right)
-    drawBodydamageElement(30, 100, 60, 60, "#76fc87"); // Grid Slot 3 (Bottom-Left)
-    drawBulletspeedElement(100, 100, 60, 60, "#76fc87");// Grid Slot 4 (Bottom-Right)
+    drawHealthElement(5, 30, 65, 65, "#76fc87");       // Grid Slot 1 (Left Box)
+    drawMaxElement(75, 30, 65, 65, "#76fc87");        // Grid Slot 2 (Right Box)
+    drawBodydamageElement(5, 100, 65, 65, "#76fc87");  // Grid Slot 3 (Left Box)
+    drawBulletspeedElement(75, 100, 65, 65, "#76fc87"); // Grid Slot 4 (Right Box)
 
 // 3. Draw a crisp yellow polygon square in center arena area ----------------------------------------------------
 drawSquareElement(425, 130, 0.4, "#ffe869");
