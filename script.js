@@ -54,6 +54,18 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
     drawMaxElement(5, 225, 150, 20, "#76fc87");         // Y: 225 (-25)
     drawHealthElement(5, 200, 150, 20, "#76fc87");      // Y: 200 (-25)
 
+//leaderboard
+
+    drawHealthElement(695, 45, 150, 20, "#76fc87");      // Row 1 (Top)
+    drawMaxElement(695, 70, 150, 20, "#76fc87");         // Row 2 (+25px)
+    drawBodydamageElement(695, 95, 150, 20, "#76fc87");  // Row 3 (+25px)
+    drawBulletspeedElement(695, 120, 150, 20, "#76fc87"); // Row 4 (+25px)
+    drawPenetrationElement(695, 145, 150, 20, "#76fc87"); // Row 5 (+25px)
+    drawBulletdamageElement(695, 170, 150, 20, "#76fc87");// Row 6 (+25px)
+    drawReloadElement(695, 195, 150, 20, "#76fc87");     // Row 7 (+25px)
+    drawMovementElement(695, 220, 150, 20, "#76fc87");   // Row 8 (Bottom)
+
+  
     // Score bar/Level bar ----------------------------------------------------
   drawScoreElement(350, 350, 150, 20, "#76fc87");
   drawLevelElement(300, 375, 250, 20, "#76fc87");
