@@ -40,7 +40,7 @@ ctx.lineJoin = "round";
 
    ctx.save();
     ctx.fillStyle = "#ffffff"; // Pure white text
-    ctx.font = "bold 14px Ubuntu, Arial, sans-serif";
+    ctx.font = "bold 18px Ubuntu, Arial, sans-serif";
     ctx.textAlign = "center";  // Centers text cleanly over the 150px bars
     ctx.textBaseline = "bottom";
     
