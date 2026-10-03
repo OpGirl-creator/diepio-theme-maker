@@ -1,28 +1,28 @@
-// Canvas Setup
+// Canvas Setup ----------------------------------------------------
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-// Element Hook References
+// Element Hook References ----------------------------------------------------
 const colorMain = document.getElementById('main');
 const colorBarrel = document.getElementById('barrel');
 const colorEnemy = document.getElementById('enemy');
 const colorFallen = document.getElementById('fallen');
 
-// Constants matching native Diep.io style designs
+// Constants matching native Diep.io style designs ----------------------------------------------------
 const colorBackground = "#cdcdcd";
 const colorGridLines = "#c4c4c4";
 const colorOutline = "#555555";
 
 let currentActiveMode = 'ffa';
 
-// Main Canvas Render Pipeline
+// Main Canvas Render Pipeline ----------------------------------------------------
 function renderGamePreview() {
 // 1. Draw Arena Background Floor
 ctx.fillStyle = colorBackground;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-// 2. Draw standard Diep.io-style grid system
-ctx.strokeStyle = colorGridLines;
+// 2. Draw standard Diep.io-style grid system ----------------------------------------------------
+ctx.strokeStyle = colorGridLines; 
 ctx.lineWidth = 1.0;
 const gridSpacing = 24;
 for (let x = 0; x < canvas.width; x += gridSpacing) {
@@ -32,19 +32,19 @@ for (let y = 0; y < canvas.height; y += gridSpacing) {
 ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
 }
 
-// Set configuration variables for vector outlines
+// Set configuration variables for vector outlines ----------------------------------------------------
 ctx.strokeStyle = colorOutline;
 ctx.lineWidth = 3.5;
 ctx.lineJoin = "round";
 
-// 3. Draw a crisp yellow polygon square in center arena area
+// 3. Draw a crisp yellow polygon square in center arena area ----------------------------------------------------
 drawSquareElement(425, 130, 0.4, "#ffe869");
 drawFallenBossElement(425, 280, -0.2, colorFallen.value);
 drawHexagonElement(200, 180, 0.2, colorFallen.value);
 drawTriangleElement(600, 280, -0.4, colorFallen.value);
   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
-    // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap)
+    // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
     drawMovementElement(5, 375, 150, 20, "#76fc87"); // Y: 375
     drawReloadElement(5, 350, 150, 20, "#76fc87");   // Y: 350 (-25)
     drawBulletdamageElement(5, 325, 150, 20, "#76fc87");// Y: 325 (-25)
@@ -54,24 +54,24 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
     drawMaxElement(5, 225, 150, 20, "#76fc87");         // Y: 225 (-25)
     drawHealthElement(5, 200, 150, 20, "#76fc87");      // Y: 200 (-25)
 
-    // Score bar/Level bar
+    // Score bar/Level bar ----------------------------------------------------
   drawScoreElement(350, 350, 150, 20, "#76fc87");
   drawLevelElement(300, 375, 250, 20, "#76fc87");
 
 
-// side boxs
+// side boxs ----------------------------------------------------
 drawNameHUD("YOUR_NAME");
 
-// 5. Draw Dynamic Game Mode Combat Tanks Layout Setup
+// 5. Draw Dynamic Game Mode Combat Tanks Layout Setup ----------------------------------------------------
 switch (currentActiveMode) {
 case 'ffa':
-// Standard FFA Duel (Single Barrel vs Single Barrel)
+// Standard FFA Duel (Single Barrel vs Single Barrel) ----------------------------------------------------
 drawTank(450, 200, -0.1, colorMain.value, 1);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 
 case 'teams2':
-// Team Mode (Flank Guard player vs Twin Cannon enemy)
+// Team Mode (Flank Guard player vs Twin Cannon enemy) ----------------------------------------------------
 // Let's modify the player to have 2 barrels for flavor!
 drawTank(220, 200, -0.1, colorMain.value, 2);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
@@ -107,7 +107,7 @@ function drawLevelElement(x, y, width, height, color) {
     ctx.rect(x, y, width, height);
     ctx.fill();
 
-    // 2. Apply your project's classic #555555 dark outline border
+    // 2. Apply your project's classic #555555 dark outline border 
     ctx.strokeStyle = colorOutline; // Reuses your global constant
     ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
     ctx.lineJoin = "round";
