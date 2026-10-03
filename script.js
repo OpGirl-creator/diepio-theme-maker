@@ -79,7 +79,6 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
 
 
 // side boxs ----------------------------------------------------
-drawNameHUD("YOUR_NAME");
 
 // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup ----------------------------------------------------
 switch (currentActiveMode) {
@@ -278,43 +277,6 @@ function drawMovementElement(x, y, width, height, color) {
     ctx.stroke();
 
     ctx.restore();
-}
-
-
-// UI HUD Name Box Builder Module
-function drawNameHUD(nameText) {
-ctx.save();
-
-// 1. Configure the Container Box Position & Dimensions
-const boxX = 15;
-const boxY = 15;
-const boxWidth = 160;
-const boxHeight = 35;
-const cornerRadius = 4; // Slight roundness matching UI panels
-
-// 2. Draw the Box Background (Semi-transparent dark grey)
-ctx.fillStyle = "rgba(85, 85, 85, 0.4)"; // 40% opaque dark outline color
-ctx.beginPath();
-ctx.roundRect(boxX, boxY, boxWidth, boxHeight, cornerRadius);
-ctx.fill();
-
-// 3. Draw the Outer Border Outlines
-ctx.strokeStyle = colorOutline; // Reuses your #555555 constant
-ctx.lineWidth = 2.5;
-ctx.stroke();
-
-// 4. Draw the Typography Text Layer
-ctx.fillStyle = "#ffffff"; // Pure white text
-ctx.font = "bold 14px Ubuntu, Arial, sans-serif"; // Diep.io utilizes 'Ubuntu' font
-ctx.textAlign = "center";
-ctx.textBaseline = "middle";
-
-// Position text exactly in the center of our bounding box layout
-const textX = boxX + (boxWidth / 2);
-const textY = boxY + (boxHeight / 2);
-ctx.fillText(nameText, textX, textY);
-
-ctx.restore();
 }
 
 // Vector Fallen Booster Builder Module
