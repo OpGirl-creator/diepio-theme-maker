@@ -37,6 +37,16 @@ ctx.strokeStyle = colorOutline;
 ctx.lineWidth = 3.5;
 ctx.lineJoin = "round";
 
+
+   ctx.save();
+    ctx.fillStyle = "#ffffff"; // Pure white text
+    ctx.font = "bold 14px Ubuntu, Arial, sans-serif";
+    ctx.textAlign = "center";  // Centers text cleanly over the 150px bars
+    ctx.textBaseline = "bottom";
+    
+    // Position the text horizontally centered above the upcoming boxes (695 + 75)
+    ctx.fillText("LEADERBOARD", 770, 35); 
+    ctx.restore();
 // 3. Draw a crisp yellow polygon square in center arena area ----------------------------------------------------
 drawSquareElement(425, 130, 0.4, "#ffe869");
 drawFallenBossElement(425, 280, -0.2, colorFallen.value);
