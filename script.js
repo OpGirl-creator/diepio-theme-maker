@@ -55,8 +55,8 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value);
     drawHealthElement(5, 200, 150, 20, "#76fc87");      // Y: 200 (-25)
 
     // Score bar/Level bar
-  drawScoreElement(350, 350, 150, 20, "#76fc87");
-  drawLevelElement(350, 375, 200, 20, "#76fc87");
+  drawScoreElement(400, 350, 150, 20, "#76fc87");
+  drawLevelElement(350, 375, 250, 20, "#76fc87");
 
 
 // side boxs
