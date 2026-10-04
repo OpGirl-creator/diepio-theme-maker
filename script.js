@@ -124,8 +124,7 @@ ctx.restore();
         canvas.height - nativeBorderThickness
     );
     
-    ctx.restore();
-} // <-- This marks the end of your main render loop function
+    ctx.restore(); // <-- This marks the end of your main render loop function
    
 //bottom right map ----------------------
        // 1. Draw the green box background frame first
