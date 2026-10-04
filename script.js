@@ -46,30 +46,6 @@ ctx.strokeStyle = colorOutline;
 ctx.lineWidth = 3.5;
 ctx.lineJoin = "round";
 
-    // =========================================================================
-    // 🧱 NATIVE DIEP.IO OUT-OF-BOUNDS ARENA BORDER
-    // =========================================================================
-    ctx.save();
-    
-    // 1. Configure the thick, dark gray out-of-bounds border properties
-    const nativeBorderThickness = 32.0;       // Creates a wide, deep border wall
-    ctx.strokeStyle = "rgba(45, 45, 45, 0.4)"; // Deep charcoal gray with transparency matching diep.io's style
-    ctx.lineWidth = nativeBorderThickness;            
-    ctx.lineJoin = "miter";                    // Clean, sharp 90-degree corner joints
-    
-    // 2. Calculate the exact inward coordinate offset to prevent clipping off-screen
-    const borderOffset = nativeBorderThickness / 2;
-    
-    ctx.strokeRect(
-        borderOffset, 
-        borderOffset, 
-        canvas.width - nativeBorderThickness, 
-        canvas.height - nativeBorderThickness
-    );
-    
-    ctx.restore();
-} // <-- This marks the end of your main render loop function
-    
 // texts ---------------------------------------------------
 ctx.save();
 ctx.fillStyle = "#ffffff"; // Pure white text
@@ -112,6 +88,7 @@ ctx.fillText("Enemy", 650, 170);
 
 ctx.restore();
 
+    
  ctx.save();
     
     // Set line thickness parameters 
@@ -125,6 +102,30 @@ ctx.restore();
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
     
     ctx.restore();
+
+        // =========================================================================
+    // 🧱 NATIVE DIEP.IO OUT-OF-BOUNDS ARENA BORDER
+    // =========================================================================
+    ctx.save();
+    
+    // 1. Configure the thick, dark gray out-of-bounds border properties
+    const nativeBorderThickness = 32.0;       // Creates a wide, deep border wall
+    ctx.strokeStyle = "rgba(45, 45, 45, 0.4)"; // Deep charcoal gray with transparency matching diep.io's style
+    ctx.lineWidth = nativeBorderThickness;            
+    ctx.lineJoin = "miter";                    // Clean, sharp 90-degree corner joints
+    
+    // 2. Calculate the exact inward coordinate offset to prevent clipping off-screen
+    const borderOffset = nativeBorderThickness / 2;
+    
+    ctx.strokeRect(
+        borderOffset, 
+        borderOffset, 
+        canvas.width - nativeBorderThickness, 
+        canvas.height - nativeBorderThickness
+    );
+    
+    ctx.restore();
+} // <-- This marks the end of your main render loop function
    
 //bottom right map ----------------------
        // 1. Draw the green box background frame first
