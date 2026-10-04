@@ -137,8 +137,8 @@ ctx.restore();
     drawBulletElement(550, 200, 10, colorEnemy.value);
     drawBulletElement(600, 195, 10, colorEnemy.value);
 
-    drawBulletElement(200, 200, 10, colorEnemy.value);
-    drawBulletElement(205, 195, 10, colorEnemy.value);
+    drawBulletElement(300, 200, 10, colorEnemy.value);
+    drawBulletElement(305, 195, 10, colorEnemy.value);
 
     
 function drawBulletElement(x, y, radius, color) {
