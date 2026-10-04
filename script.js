@@ -79,6 +79,13 @@ ctx.fillText("Summoner", 250, 60);
 ctx.strokeText("Fallen Booster", 600, 60);
 ctx.fillText("Fallen Booster", 600, 60);
 
+     //ffa enemy
+ctx.strokeText("Enemy", 430, 270);
+ctx.fillText("Enemy", 430, 270);
+
+ctx.strokeText("Enemy", 200, 270);
+ctx.fillText("Enemy", 200, 270);
+
 ctx.restore();
    
 //bottom right map ----------------------
