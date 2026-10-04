@@ -68,18 +68,15 @@ ctx.strokeText("OP GIRL", 425, 345);
 ctx.fillText("OP GIRL", 425, 345);
 
 // 3. Upgrades Text (Outline first, then Fill)
-ctx.strokeText("Upgrades", 40, 25);
-ctx.fillText("Upgrades", 40, 25);
+ctx.strokeText("Upgrades", 35, 25);
+ctx.fillText("Upgrades", 35, 25);
 
 ctx.restore();
    
 //bottom right map ----------------------
        // 1. Draw the green box background frame first
     drawMovementElement(720, 270, 120, 120, "#76fc87");
-
-    // 2. Draw the triangle second so it layers on top of the box area
-    // Calculated Center Point: X = 720 + 60 = 780, Y = 270 + 60 = 330
-    drawArrowElement(780, 330, -0.4, "#8c8c8c", 5);
+    drawArrowElement(780, 330, -0.4, "#8c8c8c", 4);
 
 //upgrades ----------------------------------------------
     drawHealthElement(5, 30, 65, 65, "#76fc87");       // Grid Slot 1 (Left Box)
