@@ -154,7 +154,7 @@ switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel) ----------------------------------------------------
 drawTank(430, 200, -0.1, colorMain.value, 1);
-drawTank(200, 150, 3.0, colorEnemy.value, 3);
+drawTank(200, 150, 3.0, colorEnemy.value, 2);
 break;
 
 case 'teams2':
