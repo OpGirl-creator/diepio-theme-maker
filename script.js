@@ -92,8 +92,8 @@ ctx.restore();
    drawTriangleElement(600, 280, -0.4, colorFallen.value,   20);
    drawTriangleElement(500, 280, -0.4, colorFallen.value,   15);
     
-   drawFallenBoosterElement(600, 100, 3, colorFallen.value);
-    drawSummonerElement(250, 100, 3, colorFallen.value, 1);
+   drawFallenBoosterElement(600, 100, 3.5, colorFallen.value);
+    drawSummonerElement(250, 100, 3.5, colorFallen.value, 1);
 
     // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
     drawMovementElement(5, 375, 150, 20, "#76fc87"); // Y: 375
@@ -154,7 +154,7 @@ switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel) ----------------------------------------------------
 drawTank(430, 200, -0.1, colorMain.value, 1);
-drawTank(200, 150, 3.0, colorEnemy.value, 2);
+drawTank(430, 150, 3.0, colorEnemy.value, 2);
 break;
 
 case 'teams2':
