@@ -68,8 +68,8 @@ ctx.strokeText("OP GIRL", 425, 345);
 ctx.fillText("OP GIRL", 425, 345);
 
 // 3. Upgrades Text (Outline first, then Fill)
-ctx.strokeText("Upgrades", 60, 25);
-ctx.fillText("Upgrades", 60, 25);
+ctx.strokeText("Upgrades", 70, 25);
+ctx.fillText("Upgrades", 70, 25);
 
 ctx.restore();
    
@@ -156,7 +156,7 @@ break;
 case 'teams2':
 // Team Mode (Flank Guard player vs Twin Cannon enemy) ----------------------------------------------------
 // Let's modify the player to have 2 barrels for flavor!
-drawTank(220, 200, -0.1, colorMain.value, 2);
+drawTank(210, 200, -0.1, colorMain.value, 2);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 }
