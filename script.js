@@ -65,7 +65,7 @@ ctx.fillText("Upgrades", 40, 25);
 ctx.restore();
    
 //bottom right map ----------------------
-   drawTriangleElement(600, 280, -0.4, colorFallen.value,   35);
+   drawTriangleElement(720, 270, -0.4, colorFallen.value,   25);
    drawMovementElement(720, 270, 120, 120, "#76fc87"); 
 //upgrades ----------------------------------------------
     drawHealthElement(5, 30, 65, 65, "#76fc87");       // Grid Slot 1 (Left Box)
@@ -74,11 +74,11 @@ ctx.restore();
     drawBulletspeedElement(75, 100, 65, 65, "#76fc87"); // Grid Slot 4 (Right Box)
 
 // 3. Draw a crisp yellow polygon square in center arena area ----------------------------------------------------
-drawSquareElement(425, 130, 0.4, "#ffe869");
-drawFallenBossElement(425, 280, -0.2, colorFallen.value);
-drawHexagonElement(200, 180, 0.2, colorFallen.value);
-drawTriangleElement(600, 280, -0.4, colorFallen.value,   35);  // Makes a larger triangle
-  drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
+   drawSquareElement(425, 130, 0.4, "#ffe869");
+   drawFallenBossElement(425, 280, -0.2, colorFallen.value);
+   drawHexagonElement(200, 180, 0.2, colorFallen.value);
+   drawTriangleElement(600, 280, -0.4, colorFallen.value,   25);  // Makes a larger triangle
+   drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
     // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
     drawMovementElement(5, 375, 150, 20, "#76fc87"); // Y: 375
@@ -99,8 +99,8 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value,   35);  // Makes a larger
     drawPenetrationElement(695, 145, 150, 20, "#76fc87"); // Row 5 (+25px)
   
     // Score bar/Level bar ----------------------------------------------------
-  drawScoreElement(350, 350, 150, 20, "#76fc87");
-  drawLevelElement(300, 375, 250, 20, "#76fc87");
+    drawScoreElement(350, 350, 150, 20, "#76fc87");
+    drawLevelElement(300, 375, 250, 20, "#76fc87");
 
 
 // side boxs ----------------------------------------------------
