@@ -87,6 +87,20 @@ ctx.strokeText("Enemy", 650, 170);
 ctx.fillText("Enemy", 650, 170);
 
 ctx.restore();
+
+ ctx.save();
+    
+    // Set line thickness parameters 
+    // Making it slightly thicker (5.0) gives it a robust, map-edge boundary feel
+    ctx.strokeStyle = colorOutline; // Reuses your #555555 constant
+    ctx.lineWidth = 5.0;            
+    ctx.lineJoin = "miter";         // Gives you crisp, sharp 90-degree corner joints
+    
+    // Draw the hollow rectangle frame exactly around the inner canvas bounds
+    // Starting at 0,0 and stretching to the full width/height (850x400)
+    ctx.strokeRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.restore();
    
 //bottom right map ----------------------
        // 1. Draw the green box background frame first
