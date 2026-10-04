@@ -85,12 +85,12 @@ ctx.restore();
     drawBulletspeedElement(75, 100, 65, 65, "#76fc87"); // Grid Slot 4 (Right Box)
 
 // 3. Draw a crisp yellow polygon square in center arena area ----------------------------------------------------
-   drawSquareElement(425, 130, 0.4, "#ffe869");
+   drawSquareElement(300, 280, 0.4, "#ffe869");
    drawFallenBossElement(425, 280, -0.2, colorFallen.value);
-   drawHexagonElement(200, 180, 0.2, colorFallen.value);
+   drawHexagonElement(200, 280, 0.2, colorFallen.value);
    drawTriangleElement(600, 280, -0.4, colorFallen.value,   20);  // Makes a larger triangle
     
-   drawFallenBoosterElement(600, 100, 1.0, colorFallen.value);
+   drawFallenBoosterElement(600, 100, -1.0, colorFallen.value);
     drawSummonerElement(300, 100, 1.0, colorFallen.value, 1.3);
 
     // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
