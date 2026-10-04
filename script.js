@@ -87,13 +87,13 @@ ctx.restore();
 // 3. Draw a crisp yellow polygon square in center arena area ----------------------------------------------------
    drawSquareElement(300, 280, 0.4, "#ffe869");
    drawFallenBossElement(400, 280, -0.2, colorFallen.value);
-   drawFallenBossElement(650, 280, -0.2, colorFallen.value);
+   drawFallenBossElement(680, 280, -0.2, colorFallen.value);
    drawHexagonElement(200, 280, 0.2, colorFallen.value);
    drawTriangleElement(600, 280, -0.4, colorFallen.value,   20);
    drawTriangleElement(500, 280, -0.4, colorFallen.value,   15);
     
    drawFallenBoosterElement(600, 100, 3, colorFallen.value);
-    drawSummonerElement(300, 100, 3, colorFallen.value, 1);
+    drawSummonerElement(250, 100, 3, colorFallen.value, 1);
 
     // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
     drawMovementElement(5, 375, 150, 20, "#76fc87"); // Y: 375
@@ -154,7 +154,7 @@ switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel) ----------------------------------------------------
 drawTank(430, 200, -0.1, colorMain.value, 1);
-drawTank(430, 150, 3.0, colorEnemy.value, -2.5);
+drawTank(200, 150, 3.0, colorEnemy.value, 3);
 break;
 
 case 'teams2':
