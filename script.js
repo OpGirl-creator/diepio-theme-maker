@@ -156,7 +156,7 @@ break;
 case 'teams2':
 // Team Mode (Flank Guard player vs Twin Cannon enemy) ----------------------------------------------------
 // Let's modify the player to have 2 barrels for flavor!
-drawTank(210, 200, -0.1, colorMain.value, 2);
+drawTank(200, 200, -0.1, colorMain.value, 2);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 }
