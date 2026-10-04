@@ -90,7 +90,7 @@ ctx.restore();
    drawHexagonElement(200, 280, 0.2, colorFallen.value);
    drawTriangleElement(600, 280, -0.4, colorFallen.value,   20);  // Makes a larger triangle
     
-   drawFallenBoosterElement(600, 100, 2.0, colorFallen.value);
+   drawFallenBoosterElement(600, 100, 2.5, colorFallen.value);
     drawSummonerElement(300, 100, 1.0, colorFallen.value, 1.3);
 
     // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
