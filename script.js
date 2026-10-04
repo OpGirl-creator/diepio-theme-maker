@@ -133,10 +133,12 @@ ctx.restore();
     drawLevelElement(300, 375, 250, 20, "#76fc87");
 
       // 2. Draw a red enemy bullet flying towards the player (Radius: 10)--------------------
-    drawBulletElement(500, 190, 10, colorMain.value);
-    drawBulletElement(550, 190, 10, colorEnemy.value);
+    drawBulletElement(500, 195, 10, colorMain.value);
+    drawBulletElement(550, 200, 10, colorEnemy.value);
     drawBulletElement(600, 195, 10, colorEnemy.value);
 
+    drawBulletElement(200, 200, 10, colorEnemy.value);
+    drawBulletElement(205, 195, 10, colorEnemy.value);
 
     
 function drawBulletElement(x, y, radius, color) {
