@@ -125,7 +125,31 @@ ctx.restore();
     drawScoreElement(350, 350, 150, 20, "#76fc87");
     drawLevelElement(300, 375, 250, 20, "#76fc87");
 
+   
+    drawBulletElement(450, 195, 10, colorMain.value);
+    // 2. Draw a red enemy bullet flying towards the player (Radius: 10)
+    drawBulletElement(550, 185, 10, colorEnemy.value);
 
+
+    
+function drawBulletElement(x, y, radius, color) {
+    ctx.save();
+    
+    // 1. Draw the inner circular background color fill
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI); // Creates a full perfect circle arc path
+    ctx.fill();
+
+    // 2. Apply your project's classic #555555 dark outline border
+    ctx.strokeStyle = colorOutline; // Reuses your global constant
+    ctx.lineWidth = 3.5;            // Reuses your theme's default outline thickness
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    ctx.restore();
+}
+    
 // map arrow ----------------------------------------------------
     // Force-Layered Vector Triangle Builder Module
 function drawArrowElement(x, y, angle, color, size = 20) {
