@@ -74,8 +74,13 @@ ctx.fillText("Upgrades", 40, 25);
 ctx.restore();
    
 //bottom right map ----------------------
-   drawTriangleElement(indicatorX, indicatorY, -0.4, "#8c8c8c", 5); 
-   drawMovementElement(boxX, boxY, boxSize, boxSize, "#76fc87");
+       // 1. Draw the green box background frame first
+    drawMovementElement(720, 270, 120, 120, "#76fc87");
+
+    // 2. Draw the triangle second so it layers on top of the box area
+    // Calculated Center Point: X = 720 + 60 = 780, Y = 270 + 60 = 330
+    drawArrowElement(780, 330, -0.4, "#8c8c8c", 5);
+
 //upgrades ----------------------------------------------
     drawHealthElement(5, 30, 65, 65, "#76fc87");       // Grid Slot 1 (Left Box)
     drawMaxElement(75, 30, 65, 65, "#76fc87");        // Grid Slot 2 (Right Box)
@@ -112,7 +117,36 @@ ctx.restore();
     drawLevelElement(300, 375, 250, 20, "#76fc87");
 
 
-// side boxs ----------------------------------------------------
+// map arrow ----------------------------------------------------
+    // Force-Layered Vector Triangle Builder Module
+function drawArrowElement(x, y, angle, color, size = 20) {
+    ctx.save();
+    
+    // 🔥 FORCE LAYER UP: Tells the canvas engine to explicitly draw this shape in FRONT
+    ctx.globalCompositeOperation = "source-over";
+    
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.fillStyle = color;
+    
+    ctx.beginPath();
+    for (let i = 0; i < 3; i++) {
+        let a = (i * 2 * Math.PI / 3) - Math.PI / 2;
+        let px = size * Math.cos(a);
+        let py = size * Math.sin(a);
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill(); 
+    
+    // Apply matching stroke outline borders
+    ctx.strokeStyle = colorOutline; 
+    ctx.lineWidth = 3.5;
+    ctx.lineJoin = "round";
+    ctx.stroke();
+    
+    ctx.restore();
+}
 
 // 5. Draw Dynamic Game Mode Combat Tanks Layout Setup ----------------------------------------------------
 switch (currentActiveMode) {
