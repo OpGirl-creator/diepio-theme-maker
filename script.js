@@ -13,6 +13,15 @@ const colorBackground = "#cdcdcd";
 const colorGridLines = "#c4c4c4";
 const colorOutline = "#555555";
 
+// Configures your square box dimensions layout
+const boxX = 720;
+const boxY = 270;
+const boxSize = 120;
+
+const indicatorX = boxX + (boxSize / 2);
+const indicatorY = boxY + (boxSize / 2);
+    
+
 let currentActiveMode = 'ffa';
 
 // Main Canvas Render Pipeline ----------------------------------------------------
@@ -65,8 +74,8 @@ ctx.fillText("Upgrades", 40, 25);
 ctx.restore();
    
 //bottom right map ----------------------
-   drawTriangleElement(720, 270, -0.4, colorFallen.value,   25);
-   drawMovementElement(720, 270, 120, 120, "#76fc87"); 
+   drawTriangleElement(indicatorX, indicatorY, -0.4, "#8c8c8c", 5); 
+   drawMovementElement(boxX, boxY, boxSize, boxSize, "#76fc87");
 //upgrades ----------------------------------------------
     drawHealthElement(5, 30, 65, 65, "#76fc87");       // Grid Slot 1 (Left Box)
     drawMaxElement(75, 30, 65, 65, "#76fc87");        // Grid Slot 2 (Right Box)
@@ -77,7 +86,7 @@ ctx.restore();
    drawSquareElement(425, 130, 0.4, "#ffe869");
    drawFallenBossElement(425, 280, -0.2, colorFallen.value);
    drawHexagonElement(200, 180, 0.2, colorFallen.value);
-   drawTriangleElement(600, 280, -0.4, colorFallen.value,   25);  // Makes a larger triangle
+   drawTriangleElement(600, 280, -0.4, colorFallen.value,   20);  // Makes a larger triangle
    drawFallenBoosterElement(650, 100, 2.8, colorFallen.value);
 
     // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
