@@ -89,7 +89,9 @@ ctx.restore();
    drawFallenBossElement(425, 280, -0.2, colorFallen.value);
    drawHexagonElement(200, 180, 0.2, colorFallen.value);
    drawTriangleElement(600, 280, -0.4, colorFallen.value,   20);  // Makes a larger triangle
+    
    drawFallenBoosterElement(650, 100, 3.2, colorFallen.value);
+    drawSummonerElement(425, 210, 0.5, colorFallen.value, 1.3);
 
     // Draw Upgrade Stat Bars (Perfectly aligned with an even 5px gap) ----------------------------------------------------
     drawMovementElement(5, 375, 150, 20, "#76fc87"); // Y: 375
@@ -161,6 +163,44 @@ drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 }
 }
+
+// Vector Summoner Boss Builder Module
+function drawSummonerElement(x, y, angle, bodyColor, scale = 1.0) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.scale(scale, scale);
+
+    // Set configuration variables for vector outlines matching your project style
+    ctx.strokeStyle = colorOutline;
+    ctx.lineWidth = 3.5;
+    ctx.lineJoin = "round";
+    
+    // Set barrel color to the barrel picker input value
+    ctx.fillStyle = colorBarrel.value;
+
+    // 1. Draw the 4 side-mounted spawner boxes (rotated 90 degrees around the center)
+    for (let i = 0; i < 4; i++) {
+        ctx.save();
+        ctx.rotate((i * 90) * Math.PI / 180); // Rotate to North, East, South, West positions
+        
+        // Draw the spawner box sticking out from the main body line
+        ctx.beginPath();
+        ctx.rect(14, -14, 22, 28); // (x, y, width, height)
+        ctx.fill(); ctx.stroke();
+        
+        ctx.restore();
+    }
+
+    // 2. Draw the main central square base body layer
+    ctx.fillStyle = bodyColor;
+    ctx.beginPath();
+    ctx.rect(-28, -28, 56, 56); // A large square body matching the boss archetype
+    ctx.fill(); ctx.stroke();
+
+    ctx.restore();
+}
+
 
 function drawScoreElement(x, y, width, height, color) {
     ctx.save();
