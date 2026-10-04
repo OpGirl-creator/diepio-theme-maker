@@ -68,8 +68,8 @@ ctx.strokeText("OP GIRL", 425, 345);
 ctx.fillText("OP GIRL", 425, 345);
 
 // 3. Upgrades Text (Outline first, then Fill)
-ctx.strokeText("Upgrades", 35, 25);
-ctx.fillText("Upgrades", 35, 25);
+ctx.strokeText("Upgrades", 50, 25);
+ctx.fillText("Upgrades", 50, 25);
 
 ctx.restore();
    
