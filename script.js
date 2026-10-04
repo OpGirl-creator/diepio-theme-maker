@@ -71,6 +71,10 @@ ctx.fillText("OP GIRL", 425, 345);
 ctx.strokeText("Upgrades", 70, 25);
 ctx.fillText("Upgrades", 70, 25);
 
+    // Summoner
+ctx.strokeText("Summoner", 250, 90);
+ctx.fillText("Summoner", 250, 90);
+
 ctx.restore();
    
 //bottom right map ----------------------
@@ -155,7 +159,7 @@ switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel 
 drawTank(430, 200, 0, colorMain.value, 1);
-drawTank(200, 200, -3.1, colorEnemy.value, 2);
+drawTank(200, 200, 0, colorEnemy.value, 2);
 break;
 
 case 'teams2':
