@@ -91,7 +91,7 @@ ctx.restore();
 //bottom right map ----------------------
        // 1. Draw the green box background frame first
     drawMovementElement(720, 270, 120, 120, "#76fc87");
-    drawArrowElement(780, 330, -0.4, "#8c8c8c", 4);
+    drawArrowElement(780, 330, -0.4, "#8c8c8c", 4); // 🔥 Linked via capital "E" name check
 
 //upgrades ----------------------------------------------
     drawHealthElement(5, 30, 65, 65, "#76fc87");       // Grid Slot 1 (Left Box)
@@ -157,7 +157,7 @@ break;
 }
 
 // =========================================================================
-// 🧱 🔥 BORDER PART ADDED HERE AT THE END SO IT RENDERS ON TOP
+// 🧱 MAP EDGE BORDER
 // =========================================================================
 ctx.save();
 const borderThickness = 6.0; 
@@ -165,14 +165,8 @@ ctx.strokeStyle = colorOutline;
 ctx.lineWidth = borderThickness;            
 ctx.lineJoin = "miter";         
 
-// Shifts the line inward so the stroke remains inside canvas edges
 const offset = borderThickness / 2;
-ctx.strokeRect(
-    offset, 
-    offset, 
-    canvas.width - borderThickness, 
-    canvas.height - borderThickness
-);
+ctx.strokeRect(offset, offset, canvas.width - borderThickness, canvas.height - borderThickness);
 ctx.restore();
 }
 
@@ -195,11 +189,11 @@ function drawBulletElement(x, y, radius, color) {
 }
     
 // map arrow ----------------------------------------------------
-    // Force-Layered Vector Triangle Builder Module
+// 🔥 FIXED: Changed "drawArrowelement" to "drawArrowElement" matching your loop call spelling
 function drawArrowElement(x, y, angle, color, size = 20) {
     ctx.save();
     
-    // 🔥 FORCE LAYER UP: Tells the canvas engine to explicitly draw this shape in FRONT
+    // FORCE LAYER UP: Tells the canvas engine to explicitly draw this shape in FRONT
     ctx.globalCompositeOperation = "source-over";
     
     ctx.translate(x, y);
@@ -265,10 +259,262 @@ function drawSummonerElement(x, y, angle, bodyColor, scale = 1.0) {
 
 function drawScoreElement(x, y, width, height, color) {
     ctx.save();
-    
-    // 1. Draw the inner background color fill
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.rect(x, y, width, height);
     ctx.fill();
+    ctx.strokeStyle = colorOutline; 
+    ctx.lineWidth = 3.5;            
+    ctx.lineJoin = "round";
+    ctx.stroke();
+    ctx.restore();
+}
 
+
+function drawLevelElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+function drawHealthElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+// Vector Square Builder Module
+function drawMaxElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+function drawBodydamageElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+function drawBulletspeedElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+function drawPenetrationElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+function drawBulletdamageElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+function drawReloadElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+// Vector Rectangle Builder Module
+function drawMovementElement(x, y, width, height, color) {
+ctx.save();
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(x, y, width, height);
+ctx.fill();
+ctx.strokeStyle = colorOutline;
+ctx.lineWidth = 3.5;
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.restore();
+}
+// Vector Fallen Booster Builder Module
+function drawFallenBoosterElement(x, y, angle, bodyColor, scale = 1.3) {
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+ctx.scale(scale, scale);
+ctx.fillStyle = colorBarrel.value;
+ctx.save(); ctx.rotate(-134 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
+ctx.save(); ctx.rotate(136 * Math.PI / 180); ctx.fillRect(0, -11, 40, 22); ctx.strokeRect(0, -11, 40, 22); ctx.restore();
+ctx.save(); ctx.rotate(-146 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
+ctx.save(); ctx.rotate(151 * Math.PI / 180); ctx.fillRect(0, -11, 42, 22); ctx.strokeRect(0, -11, 42, 22); ctx.restore();
+ctx.fillRect(0, -13, 44, 26);
+ctx.strokeRect(0, -13, 44, 26);
+ctx.fillStyle = bodyColor;
+ctx.beginPath();
+ctx.arc(0, 0, 24, 0, 2 * Math.PI);
+ctx.fill();
+ctx.stroke();
+ctx.restore();
+}
+function drawTriangleElement(x, y, angle, color, size = 20) {
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+ctx.fillStyle = color;
+ctx.beginPath();
+for (let i = 0; i < 3; i++) {
+let a = (i * 2 * Math.PI / 3) - Math.PI / 2;
+let px = size * Math.cos(a);
+let py = size * Math.sin(a);
+if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+}
+ctx.closePath();
+ctx.fill(); ctx.stroke();
+ctx.restore();
+}
+function drawHexagonElement(x, y, angle, color, size = 35) {
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+ctx.fillStyle = color;
+ctx.beginPath();
+for (let i = 0; i < 6; i++) {
+let a = (i * 2 * Math.PI / 6) - Math.PI / 2;
+let px = size * Math.cos(a);
+let py = size * Math.sin(a);
+if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+}
+ctx.closePath();
+ctx.fill(); ctx.stroke();
+ctx.restore();
+}
+function drawRegen(x, y, angle, color) {
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(-50, -50, 20, 20);
+ctx.fill(); ctx.stroke();
+ctx.restore();
+}
+function drawSquareElement(x, y, angle, color) {
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.rect(-16, -16, 32, 32);
+ctx.fill(); ctx.stroke();
+ctx.restore();
+}
+function drawFallenBossElement(x, y, angle, color) {
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+ctx.fillStyle = color;
+ctx.beginPath();
+for (let i = 0; i < 5; i++) {
+let a = (i * 2 * Math.PI / 5) - Math.PI / 2;
+let px = 28 * Math.cos(a); let py = 28 * Math.sin(a);
+if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+}
+ctx.closePath();
+ctx.fill(); ctx.stroke();
+ctx.restore();
+}
+function drawTank(x, y, angle, bodyColor, barrelCount) {
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+ctx.fillStyle = colorBarrel.value;
+ctx.beginPath();
+if (barrelCount === 1) {
+ctx.rect(0, -13, 44, 26); ctx.fill(); ctx.stroke();
+} else if (barrelCount === 2) {
+ctx.rect(0, -19, 42, 15); ctx.rect(0, 4, 42, 15); ctx.fill(); ctx.stroke();
+}
+ctx.fillStyle = bodyColor;
+ctx.beginPath();
+ctx.arc(0, 0, 24, 0, 2 * Math.PI);
+ctx.fill(); ctx.stroke();
+ctx.restore();
+}
+const modeButtons = document.querySelectorAll('.mode-btn');
+modeButtons.forEach(button => {
+button.addEventListener('click', () => {
+modeButtons.forEach(btn => btn.classList.remove('active'));
+button.classList.add('active');
+currentActiveMode = button.getAttribute('data-mode');
+renderGamePreview();
+});
+});
+const allPickers = [colorMain, colorBarrel, colorEnemy, colorFallen];
+allPickers.forEach(picker => picker.addEventListener('input', renderGamePreview));
+renderGamePreview();
+function generateThemeScript() {
+const main = colorMain.value.replace('#', '');
+const barrel = colorBarrel.value.replace('#', '');
+const enemy = colorEnemy.value.replace('#', '');
+const fallen = colorFallen.value.replace('#', '');
+return // Diep.io Custom Console Theme Script\n +
+net_set_color(1, "${main}"); // Player Tank Body\n +
+net_set_color(0, "${barrel}"); // Tank Barrels\n +
+net_set_color(12, "${enemy}"); // Target Enemy Color\n +
+net_set_color(15, "${fallen}"); // Fallen Boss Color;
+}
+document.getElementById('viewCodeBtn').addEventListener('click', () => {
+document.getElementById('codeOutput').value = generateThemeScript();
+});
+document.getElementById('copyCodeBtn').addEventListener('click', () => {
+const output = document.getElementById('codeOutput');
+output.value = generateThemeScript();
+output.select();
+navigator.clipboard.writeText(output.value);
+alert('Theme script copied to clipboard!');
+});
