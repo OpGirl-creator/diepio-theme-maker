@@ -68,8 +68,8 @@ ctx.strokeText("OP GIRL", 425, 345);
 ctx.fillText("OP GIRL", 425, 345);
 
 // 3. Upgrades Text (Outline first, then Fill)
-ctx.strokeText("Upgrades", 50, 25);
-ctx.fillText("Upgrades", 50, 25);
+ctx.strokeText("Upgrades", 60, 25);
+ctx.fillText("Upgrades", 60, 25);
 
 ctx.restore();
    
@@ -149,7 +149,7 @@ function drawArrowElement(x, y, angle, color, size = 20) {
 switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel) ----------------------------------------------------
-drawTank(400, 200, -0.1, colorMain.value, 1);
+drawTank(440, 200, -0.1, colorMain.value, 1);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 
