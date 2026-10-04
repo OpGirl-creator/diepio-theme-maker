@@ -164,7 +164,7 @@ case 'ffa':
 // Standard FFA Duel 
 drawTank(430, 200, 0, colorMain.value, 1);
 drawTank(200, 200, 0, colorEnemy.value, 2);
-drawTank(200, 200, 3, colorEnemy.value, 2);
+drawTank(650, 200, 3.1, colorEnemy.value, 2);
 break;
 
 case 'teams2':
