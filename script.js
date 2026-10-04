@@ -80,8 +80,8 @@ ctx.strokeText("Fallen Booster", 600, 60);
 ctx.fillText("Fallen Booster", 600, 60);
 
      //ffa enemy
-ctx.strokeText("Enemy", 430, 170);
-ctx.fillText("Enemy", 430, 170);
+ctx.strokeText("Enemy", 200, 170);
+ctx.fillText("Enemy", 200, 170);
 
 ctx.strokeText("Enemy", 650, 170);
 ctx.fillText("Enemy", 650, 170);
@@ -133,8 +133,9 @@ ctx.restore();
     drawLevelElement(300, 375, 250, 20, "#76fc87");
 
       // 2. Draw a red enemy bullet flying towards the player (Radius: 10)--------------------
-    drawBulletElement(500, 185, 10, colorMain.value);
-    drawBulletElement(550, 185, 10, colorEnemy.value);
+    drawBulletElement(500, 190, 10, colorMain.value);
+    drawBulletElement(550, 190, 10, colorEnemy.value);
+    drawBulletElement(600, 195, 10, colorEnemy.value);
 
 
     
