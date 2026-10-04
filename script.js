@@ -65,8 +65,8 @@ ctx.fillText("Upgrades", 40, 25);
 ctx.restore();
    
 //bottom right map ----------------------
-   drawMovementElement(720, 270, 120, 120, "#76fc87");
-drawTriangleElement(600, 280, -0.4, colorFallen.value,   35);  // Makes a larger triangle
+   drawTriangleElement(600, 280, -0.4, colorFallen.value,   35);
+   drawMovementElement(720, 270, 120, 120, "#76fc87"); 
 //upgrades ----------------------------------------------
     drawHealthElement(5, 30, 65, 65, "#76fc87");       // Grid Slot 1 (Left Box)
     drawMaxElement(75, 30, 65, 65, "#76fc87");        // Grid Slot 2 (Right Box)
@@ -109,7 +109,7 @@ drawTriangleElement(600, 280, -0.4, colorFallen.value,   35);  // Makes a larger
 switch (currentActiveMode) {
 case 'ffa':
 // Standard FFA Duel (Single Barrel vs Single Barrel) ----------------------------------------------------
-drawTank(450, 200, -0.1, colorMain.value, 1);
+drawTank(400, 200, -0.1, colorMain.value, 1);
 drawTank(620, 180, 3.0, colorEnemy.value, 2);
 break;
 
