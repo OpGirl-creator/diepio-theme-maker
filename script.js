@@ -109,7 +109,7 @@ ctx.restore();
     ctx.save();
     
     // 1. Configure the thick, dark gray out-of-bounds border properties
-    const nativeBorderThickness = 32.0;       // Creates a wide, deep border wall
+    const nativeBorderThickness = 36.0;       // Creates a wide, deep border wall
     ctx.strokeStyle = "rgba(45, 45, 45, 0.4)"; // Deep charcoal gray with transparency matching diep.io's style
     ctx.lineWidth = nativeBorderThickness;            
     ctx.lineJoin = "miter";                    // Clean, sharp 90-degree corner joints
